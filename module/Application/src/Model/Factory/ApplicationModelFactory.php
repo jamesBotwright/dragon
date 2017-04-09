@@ -19,7 +19,7 @@ class ApplicationModelFactory
      */
     public function __invoke($serviceLocator)
     {
-        $em                 = $serviceLocator->get();
+        $em                 = $serviceLocator->get('doctrine.entitymanager.orm_default');
         $applicationModel   = new \Application\Model\ApplicationModel($em);
         return $applicationModel;
     }
