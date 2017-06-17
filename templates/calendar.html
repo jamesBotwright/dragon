@@ -12,7 +12,10 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
         <script>
-            $(document).ready(function() {        
+            $(document).ready(onLoadFunction);
+                    
+            
+            function onLoadFunction() {        
                 $('#calendar').fullCalendar({
                     events: '/api',
                     eventDataTransform: function (rawEventData) {
@@ -25,7 +28,7 @@
                         };
                     }
                 });
-            })(jQuery);
+            }
         </script>
     </body>
 </html>
