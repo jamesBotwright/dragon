@@ -15,12 +15,15 @@
             ->prependStylesheet($this->basePath('css/style.css'))
             ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
             ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+            ->prependStylesheet($this->basePath('fullcalendar-3.4.0/fullcalendar.min.css'))
         ?>
 
         <!-- Scripts -->
         <?= $this->headScript()
             ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+            ->prependFile($this->basePath('fullcalendar-3.4.0/lib/jquery.min.js'))
+            ->prependFile($this->basePath('fullcalendar-3.4.0/lib/moment.min.js'))
+            ->prependFile($this->basePath('fullcalendar-3.4.0/fullcalendar.js'))
         ?>
     </head>
     <body>
