@@ -17,7 +17,8 @@
             
             function onLoadFunction() {        
                 $('#calendar').fullCalendar({
-                    dayClick: function() {
+                    selectable: true,
+                    dayClick:   function() {
                         alert('a day has been clicked!');
                     }
 //                    events: '/api',
