@@ -1,7 +1,14 @@
 <script>
+    /**
+     * 
+     * @param {type} param
+     */
     $(document).ready(onLoadFunction);
-
-
+    
+    /**
+     * 
+     * @returns {undefined}
+     */
     function onLoadFunction() {        
         $('#calendar').fullCalendar({
             editable:   true,
@@ -9,9 +16,9 @@
             dayClick:   function() {
                 alert('a day has been clicked!');
             },
-            select:     function() {
-                alert('selected!');
-            },
+//            select:     function() {
+//                alert('selected!');
+//            },
             events: '/api',
             eventDataTransform: function (rawEventData) {
                 return {
