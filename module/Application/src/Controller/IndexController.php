@@ -61,12 +61,23 @@ class IndexController extends AbstractActionController
     public function addEventAction()
     {
         $calendarModel   = $this->calendarModel;
-        $request    = $this->getRequest();
+        $eventsForm      = $calendarModel->getEventsForm();
+        $request         = $this->getRequest();
         if($request->IsPost()) {
-            
+            $eventsForm->setData($request->getPost());
+            $eventsForm->setInputFilter($eventsForm->getInputFilter());
+            if($eventsForm->isValid()) {
+                
+            } else {
+                $this->getResponse()->setStatusCode(401);
+            }
         }
-        return new JsonModel([
-            
-        ]);
+        $viewModel = new ViewModel();
+        $viewModel->setVariables([
+                'eventsForm'   => $eventsForm,
+            ])
+            ->setTemplate('application/index/partial/add-event-modal.phtml')
+            ->setTerminal(true);
+        return $viewModel;
     }
 }
