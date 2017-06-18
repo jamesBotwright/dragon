@@ -12,7 +12,7 @@ function onLoadFunction() {
    $('#calendar').fullCalendar({
        editable:   true,
        selectable: true,
-       height:     400,
+       height:     450,
        dayClick:   function() {
            alert('a day has been clicked!');
        },
