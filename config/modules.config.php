@@ -13,6 +13,7 @@
 return [
     'DoctrineModule',
     'DoctrineORMModule',
+    'Zend\Form',
     'Zend\Cache',
     'Zend\Paginator',
     'Zend\Router',
