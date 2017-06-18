@@ -31,7 +31,7 @@ function onLoadFunction() {
        selectable: true,
        height:     450,
        dayClick:   function() {
-           $('#addEventModal').modal({backdrop: 'static', keyboard: false});
+           $('#add-event-modal').modal({backdrop: 'static', keyboard: false});
        }
 //            select:     function() {
 //                alert('selected!');
@@ -57,7 +57,7 @@ function onLoadFunction() {
 function addEvent() {
     postAddEventData()
         .done(function() {
-            $('#addEventModal').modal('hide');
+            $('#add-event-modal').modal('hide');
         });
 }
 
@@ -76,7 +76,7 @@ function postAddEventData() {
 		},
 		error: function(jXHR, textStatus, errorThrown) {
 			if (jXHR.status == 401) {
-				$("#test-insert").html(jXHR.responseText);
+				$("#add-event-modal").html(jXHR.responseText);
 			}
 		}
 	});

@@ -6,70 +6,68 @@
     echo $this->form()->openTag($form);
 ?>
 
-<div class="modal fade" id="addEventModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h3>Add Event</h3>
-            </div>
-            <div class="modal-body"> 
-                <?php echo $this->formHidden($form->get('id'));?>
-                <h4>Event Details</h4>
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-md-6">
-                            <?php echo $this->formLabel($form->get('start'));?>
-                            <?php echo $this->formDate($form->get('start'));?>
-                            <?php echo $this->FormElementErrors($form->get('start'));?>
-                        </div>
-                        <div class="col-md-6">
-                            <?php echo $this->formLabel($form->get('end'));?>
-                            <?php echo $this->formDate($form->get('end'));?>
-                            <?php echo $this->FormElementErrors($form->get('end'));?>
-                        </div>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h3>Add Event</h3>
+        </div>
+        <div class="modal-body"> 
+            <?php echo $this->formHidden($form->get('id'));?>
+            <h4>Event Details</h4>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <?php echo $this->formLabel($form->get('start'));?>
+                        <?php echo $this->formDate($form->get('start'));?>
+                        <?php echo $this->FormElementErrors($form->get('start'));?>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <?php echo $this->formLabel($form->get('title'));?>
-                            <?php echo $this->formText($form->get('title'));?>
-                            <?php echo $this->FormElementErrors($form->get('title'));?>
-                        </div>
-                        <div class="col-md-12">
-                            <?php echo $this->formLabel($form->get('description'));?>
-                            <?php echo $this->formText($form->get('description'));?>
-                            <?php echo $this->FormElementErrors($form->get('description'));?>
-                        </div>
+                    <div class="col-md-6">
+                        <?php echo $this->formLabel($form->get('end'));?>
+                        <?php echo $this->formDate($form->get('end'));?>
+                        <?php echo $this->FormElementErrors($form->get('end'));?>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <?php echo $this->formLabel($form->get('location'));?>
-                            <?php echo $this->formText($form->get('location'));?>
-                            <?php echo $this->FormElementErrors($form->get('location'));?>
-                        </div>
-                        <div class="col-md-12">
-                            <?php echo $this->formLabel($form->get('contact'));?>
-                            <?php echo $this->formText($form->get('contact'));?>
-                            <?php echo $this->FormElementErrors($form->get('contact'));?>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo $this->formLabel($form->get('title'));?>
+                        <?php echo $this->formText($form->get('title'));?>
+                        <?php echo $this->FormElementErrors($form->get('title'));?>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <?php echo $this->formLabel($form->get('url'));?>
-                            <?php echo $this->formText($form->get('url'));?>
-                            <?php echo $this->FormElementErrors($form->get('url'));?>
-                        </div>
+                    <div class="col-md-12">
+                        <?php echo $this->formLabel($form->get('description'));?>
+                        <?php echo $this->formText($form->get('description'));?>
+                        <?php echo $this->FormElementErrors($form->get('description'));?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo $this->formLabel($form->get('location'));?>
+                        <?php echo $this->formText($form->get('location'));?>
+                        <?php echo $this->FormElementErrors($form->get('location'));?>
+                    </div>
+                    <div class="col-md-12">
+                        <?php echo $this->formLabel($form->get('contact'));?>
+                        <?php echo $this->formText($form->get('contact'));?>
+                        <?php echo $this->FormElementErrors($form->get('contact'));?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo $this->formLabel($form->get('url'));?>
+                        <?php echo $this->formText($form->get('url'));?>
+                        <?php echo $this->FormElementErrors($form->get('url'));?>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success" title="submit" onclick="addEvent();">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Add Event
-                </button>
-            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-success" title="submit" onclick="addEvent();">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Add Event
+            </button>
         </div>
     </div>
 </div>
