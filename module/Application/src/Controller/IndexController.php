@@ -14,15 +14,24 @@ use Zend\View\Model\JsonModel;
 class IndexController extends AbstractActionController
 {
     /**
-     * @var object  $applicationModel
+     * @var object $applicationModel
      */
     private $applicationModel;
     
     /**
+     * @var object $calendarModel
+     */
+    private $calendarModel;
+    
+    /**
      * 
      */
-    public function __construct($applicationModel) {
+    public function __construct(
+        $applicationModel, 
+        $calendarModel
+    ) {
         $this->applicationModel = $applicationModel;
+        $this->calendarModel    = $calendarModel;
     }
     
     /**
@@ -39,6 +48,19 @@ class IndexController extends AbstractActionController
      */
     public function calendarAction()
     {
+        return [];
+    }
+    
+    /**
+     * 
+     */
+    public function addEventAction()
+    {
+        $calendarModel   = $this->calendarModel;
+        $request    = $this->getRequest();
+        if($request->IsPost()) {
+            
+        }
         return [];
     }
 }

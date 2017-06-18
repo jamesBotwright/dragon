@@ -54,7 +54,8 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-                'applicationModel' => Model\Factory\ApplicationModelFactory::class,
+                'applicationModel'  => Model\Factory\ApplicationModelFactory::class,
+                'calendarModel'     => Model\Factory\CalendarModelFactory::class,
             ],
     ],
     'view_manager' => [
