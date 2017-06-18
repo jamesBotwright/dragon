@@ -1,24 +1,8 @@
-/**
- * Fade loading GIF when page loaded
- * @author James Botwright<james.botwright@glazingvision.co.uk>
- * @version v1.0 26 May 2017
- */
-$(window).load(function() {
-	$(".se-pre-con").fadeOut("slow");
-});
-
-/**
- * Bind loading GIF to AJAX events
- * @author James Botwright<james.botwright@glazingvision.co.uk>
- * @version v1.0 26 May 2017
- */
-$(document).ready(onLoadFunction)
-.on('ajaxStart', function(){
-    $('.se-pre-con').fadeIn();
-})
-.on('ajaxStop', function(){
-    $('.se-pre-con').fadeOut('slow');
-});
+ /**
+* 
+* @param {type} param
+*/
+$(document).ready(onLoadFunction);
 
 /**
 * 
@@ -30,7 +14,8 @@ function onLoadFunction() {
        selectable: true,
        height:     450,
        dayClick:   function() {
-           //$('#addEventModal').modal({backdrop: 'static', keyboard: false});
+           alert('a day has been clicked!');
+           $('#addEventModal').modal({backdrop: 'static', keyboard: false});
        },
 //            select:     function() {
 //                alert('selected!');
@@ -48,10 +33,6 @@ function onLoadFunction() {
    });
 }
 
-/**
- * 
- * @returns {undefined}
- */
 function addEvent() {
     
 }
