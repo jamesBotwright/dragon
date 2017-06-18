@@ -3,7 +3,7 @@
  * @author James Botwright<james.botwright@glazingvision.co.uk>
  * @version v1.0 18 Jun 2017
  */
-$(window).load(function() {
+$(window).on(function() {
 	$(".se-pre-con").fadeOut("slow");
 });
 
