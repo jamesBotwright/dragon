@@ -1,11 +1,4 @@
-/**
- * Fade loading GIF when page loaded
- * @author James Botwright<james.botwright@glazingvision.co.uk>
- * @version v1.0 26 May 2017
- */
-$(window).load(function() {
-	$(".se-pre-con").fadeOut("slow");
-});
+
 
 /**
 * 
@@ -18,7 +11,8 @@ $(document).ready(onLoadFunction);
 * @returns {undefined}
 */
 function onLoadFunction() {        
-   $('#calendar').fullCalendar({
+    $(".se-pre-con").fadeOut("slow");
+    $('#calendar').fullCalendar({
        editable:   true,
        selectable: true,
        height:     450,
