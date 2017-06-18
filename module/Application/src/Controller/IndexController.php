@@ -70,6 +70,7 @@ class IndexController extends AbstractActionController
                 $calendarModel->persistFlush();
             } else {
                 $this->getResponse()->setStatusCode(401);
+                \Zend\Debug\Debug::dump($eventsForm->getMessages());
             }
         }
         $viewModel = new ViewModel();

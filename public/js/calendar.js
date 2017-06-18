@@ -57,7 +57,7 @@ function onLoadFunction() {
 function addEvent() {
     postAddEventData()
         .done(function() {
-    
+            $('#addEventModal').modal('hide');
         });
 }
 
