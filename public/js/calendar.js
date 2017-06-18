@@ -1,10 +1,15 @@
-
-
 /**
-* 
-* @param {type} param
-*/
-$(document).ready(onLoadFunction);
+ * Bind loading GIF to AJAX events
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 26 May 2017
+ */
+$(document).ready(onLoadFunction)
+.on('ajaxStart', function(){
+    $('.se-pre-con').fadeIn();
+})
+.on('ajaxStop', function(){
+    $('.se-pre-con').fadeOut('slow');
+});
 
 /**
 * 
