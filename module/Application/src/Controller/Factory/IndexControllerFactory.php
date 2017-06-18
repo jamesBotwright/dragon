@@ -21,7 +21,8 @@ class IndexControllerFactory
     {
         $serviceLocator     = $controllerServiceLocator->getServiceLocator();
         $applicationModel   = $serviceLocator->get('applicationModel');
-        $controller         = new \Application\Controller\IndexController($applicationModel);
+        $calendarModel      = $serviceLocator->get('calendarModel');
+        $controller         = new \Application\Controller\IndexController($applicationModel, $calendarModel);
         return $controller;
     }
 }
