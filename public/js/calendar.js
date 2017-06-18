@@ -76,7 +76,7 @@ function postAddEventData() {
 		},
 		error: function(jXHR, textStatus, errorThrown) {
 			if (jXHR.status == 401) {
-				$("#event-content").html(jXHR.responseText);
+				$("#test-insert").html(jXHR.responseText);
 			}
 		}
 	});
