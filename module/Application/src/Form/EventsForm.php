@@ -12,7 +12,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
     public function __construct(ObjectManager $objectManager)
     {
         parent::__construct('eventsForm');
-        $this->setAttribute('method','post');
+        $this->setAttribute('method', 'post');
         $this->setHydrator(new DoctrineHydrator($objectManager, 'Application\Entity\Events'))
                 ->setObject(new \Application\Entity\Events);
         
