@@ -9,12 +9,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="editDocumentRegisterModal" tabindex="-1" role="dialog" aria-labelledby="editDocumentRegisterModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <?php echo $this->partial('application/index/partial/add-event-modal.phtml', ['eventsForm' => $this->eventsForm]); ?>
-        </div>
-    </div>
-</div>
+<?php echo $this->partial('application/index/partial/add-event-modal.phtml', ['eventsForm' => $this->eventsForm]); ?>
 
 <script type="text/javascript" src="<?php echo $this->basePath() . '/js/calendar.js?'.uniqid();?>"></script>
