@@ -29,6 +29,9 @@ return [
                 'type'    => Segment::class,
                 'options' => [
                     'route'    => '/application[/:action]',
+                    'constraints'   => [
+                        'action'    => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ],
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
