@@ -3,13 +3,13 @@
  * @author James Botwright<james.botwright@glazingvision.co.uk>
  * @version v1.0 18 Jun 2017
  */
-$(document).ready(onLoadFunction)
-.on('ajaxStart', function(){
-    $('.se-pre-con').fadeIn();
-})
-.on('ajaxStop', function(){
-    $('.se-pre-con').fadeOut('slow');
-});
+$(document).ready(onLoadFunction);
+//.on('ajaxStart', function(){
+//    $('.se-pre-con').fadeIn();
+//})
+//.on('ajaxStop', function(){
+//    $('.se-pre-con').fadeOut('slow');
+//});
 
 /**
  * Initialisation
@@ -17,7 +17,7 @@ $(document).ready(onLoadFunction)
  * @version v1.0 18 Jun 2017
  */
 function onLoadFunction() {        
-    $(".se-pre-con").fadeOut("slow");
+    //$(".se-pre-con").fadeOut("slow");
     $('#calendar').fullCalendar({
        editable:   true,
        selectable: true,
