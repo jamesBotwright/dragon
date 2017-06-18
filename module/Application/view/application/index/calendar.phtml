@@ -4,4 +4,27 @@
     </div>
 </div>
 
+<div id="calendarModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4>Add Event</h4>
+            </div>
+            <div id="modalBody" class="modal-body"> 
+                Details:
+            </div>
+            <div class="modal-footer">
+                <button type='button' data-toggle='tooltip' title='Add Event' class='btn btn-success btn-xs' 
+                    onclick='addEvent();'>
+                    <span class='glyphicon glyphicon-ok' aria-hidden='true'></span> Add Event
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    <span class='glyphicon glyphicon-cancel' aria-hidden='true'></span>Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="<?php echo $this->basePath() . '/js/calendar.js?'.uniqid();?>"></script>

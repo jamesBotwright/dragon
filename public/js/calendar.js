@@ -31,3 +31,11 @@ function onLoadFunction() {
        }
    });
 }
+
+/**
+ * 
+ * @returns {undefined}
+ */
+function addEvent() {
+    
+}
