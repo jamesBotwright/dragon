@@ -35,6 +35,16 @@ return [
                     ],
                 ],
             ],
+            'calendar' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/calendar[/:id]',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'calendar',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
