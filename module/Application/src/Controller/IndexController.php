@@ -61,6 +61,6 @@ class IndexController extends AbstractActionController
         if($request->IsPost()) {
             
         }
-        return [];
+        return new JsonModel();
     }
 }
