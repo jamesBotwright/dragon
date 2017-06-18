@@ -14,14 +14,13 @@ class IndexControllerFactory
      * @author James Botwright <jamesb@glazingvision.co.uk>
      * @version 09.04.17
      * 
-     * @param $controllerServiceLocator
+     * @param $container
      * @return \Application\Controller\IndexController
      */
-    public function __invoke($controllerServiceLocator)
+    public function __invoke($container)
     {
-        $serviceLocator     = $controllerServiceLocator->getServiceLocator();
-        $applicationModel   = $serviceLocator->get('applicationModel');
-        $calendarModel      = $serviceLocator->get('calendarModel');
+        $applicationModel   = $container->get('applicationModel');
+        $calendarModel      = $container->get('calendarModel');
         $controller         = new \Application\Controller\IndexController($applicationModel, $calendarModel);
         return $controller;
     }
