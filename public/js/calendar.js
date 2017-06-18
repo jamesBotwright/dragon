@@ -68,7 +68,7 @@ function postAddEventData() {
 		},
 		error: function(jXHR, textStatus, errorThrown) {
 			if (jXHR.status == 401) {
-				$("#modalBody").html(jXHR.responseText);
+				$("#addEventModal").html(jXHR.responseText);
 			}
 		}
 	});
