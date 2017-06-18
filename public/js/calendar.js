@@ -59,7 +59,7 @@ function postAddEventData() {
     return $.ajax({
 		url: '/application/addEvent',
 		type: "POST",
-		data: $('#existingContactSearchForm').serialize(),
+		data: $('#eventsForm').serialize(),
 		success: function(data, textStatus, jXHR) {
 			
 		},
@@ -74,7 +74,7 @@ function postAddEventData() {
  * @author James Botwright<james.botwright@glazingvision.co.uk>
  * @version v1.0 18 Jun 2017
  */
-$('#existingContactSearchForm').on('submit',function(e) {
+$('#eventsForm').on('submit',function(e) {
 	e.preventDefault();
     postAddEventData();
 });

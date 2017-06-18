@@ -48,7 +48,11 @@ class IndexController extends AbstractActionController
      */
     public function calendarAction()
     {
-        return [];
+        $calendarModel   = $this->calendarModel;
+        $eventsForm      = $calendarModel->getEventsForm();
+        return [
+            'eventsForm'   => $eventsForm,
+        ];
     }
     
     /**

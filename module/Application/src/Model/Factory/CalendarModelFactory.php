@@ -19,8 +19,14 @@ class CalendarModelFactory
      */
     public function __invoke($serviceLocator)
     {
-        $em              = $serviceLocator->get('doctrine.entitymanager.orm_default');
-        $calendarModel   = new \Application\Model\CalendarModel($em);
+        $em             = $serviceLocator->get('doctrine.entitymanager.orm_default');
+        $eventsEntity   = new \Application\Entity\Events();
+        $eventsForm     = new \Application\Form\EventsForm($em);
+        $calendarModel  = new \Application\Model\CalendarModel(
+            $em,
+            $eventsEntity,
+            $eventsForm
+        );
         return $calendarModel;
     }
 }

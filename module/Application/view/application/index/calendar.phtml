@@ -1,3 +1,12 @@
+<?php 
+    $form = $this->form;
+    $form->setAttribute('name', 'eventsForm');
+    $form->setAttribute('id', 'eventsForm');
+    $form->prepare();
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('id'));
+?>
+
 <div class="se-pre-con"></div>
 <div class="overlay">
 	<div id="loading-img"></div>
@@ -22,16 +31,24 @@
                     <div class="form-horizontal">
                         <div class="form-group">
                             <div class="col-md-12 col-lg-12">
-                                <label class="control-label" for="startDate">Start Date</label>
-                                <input type="date" name="startDate" id="startDate" class="datepicker form-control input-sm hasDatepicker">
+                                <?php echo $this->formLabel($form->get('start'));?>
+                                <?php echo $this->formDate($form->get('start'));?>
+                                <?php echo $this->FormElementErrors($form->get('start'));?>
                             </div>
                             <div class="col-md-12 col-lg-12">
-                                <label class="control-label" for="endDate">End Date</label>
-                                <input type="date" name="endDate" id="endDate" class="datepicker form-control input-sm hasDatepicker">
+                                <?php echo $this->formLabel($form->get('end'));?>
+                                <?php echo $this->formDate($form->get('end'));?>
+                                <?php echo $this->FormElementErrors($form->get('end'));?>
                             </div>
                             <div class="col-md-12 col-lg-12">
-                                <label class="control-label" for="description">Description</label>
-                                <input type="text" name="description" id="description" class="form-control input-sm">
+                                <?php echo $this->formLabel($form->get('title'));?>
+                                <?php echo $this->formText($form->get('title'));?>
+                                <?php echo $this->FormElementErrors($form->get('title'));?>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <?php echo $this->formLabel($form->get('description'));?>
+                                <?php echo $this->formText($form->get('description'));?>
+                                <?php echo $this->FormElementErrors($form->get('description'));?>
                             </div>
                         </div>
                     </div>
