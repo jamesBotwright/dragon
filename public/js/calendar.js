@@ -47,7 +47,10 @@ function onLoadFunction() {
  * @version v1.0 18 Jun 2017
  */
 function addEvent() {
-    postAddEventData();
+    postAddEventData()
+        .done(function() {
+    
+        });
 }
 
 /**
@@ -65,7 +68,7 @@ function postAddEventData() {
 		},
 		error: function(jXHR, textStatus, errorThrown) {
 			if (jXHR.status == 401) {
-				$("#event-content").html(jXHR.responseText);
+				$("#modalBody").html(jXHR.responseText);
 			}
 		}
 	});
