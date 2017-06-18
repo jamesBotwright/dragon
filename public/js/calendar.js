@@ -1,7 +1,7 @@
 /**
  * Bind loading GIF to AJAX events
  * @author James Botwright<james.botwright@glazingvision.co.uk>
- * @version v1.0 26 May 2017
+ * @version v1.0 18 Jun 2017
  */
 $(document).ready(onLoadFunction)
 .on('ajaxStart', function(){
@@ -12,9 +12,10 @@ $(document).ready(onLoadFunction)
 });
 
 /**
-* 
-* @returns {undefined}
-*/
+ * Initialisation
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 18 Jun 2017
+ */
 function onLoadFunction() {        
     $(".se-pre-con").fadeOut("slow");
     $('#calendar').fullCalendar({
@@ -27,23 +28,53 @@ function onLoadFunction() {
 //            select:     function() {
 //                alert('selected!');
 //            },
-       events: '/api',
-       eventDataTransform: function (rawEventData) {
-           return {
-               id: rawEventData.id,
-               title: rawEventData.title,
-               start: rawEventData.start,
-               end: rawEventData.end,
-               url: rawEventData.url
-           };
-       }
+//       events: '/api',
+//       eventDataTransform: function (rawEventData) {
+//           return {
+//               id: rawEventData.id,
+//               title: rawEventData.title,
+//               start: rawEventData.start,
+//               end: rawEventData.end,
+//               url: rawEventData.url
+//           };
+//       }
    });
 }
 
 /**
- * 
- * @returns {undefined}
+ * Add event to dB 
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 18 Jun 2017
  */
 function addEvent() {
-    
+    postAddEventData();
 }
+
+/**
+ * POST form data 
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 18 Jun 2017
+ */
+function postAddEventData() {
+    return $.ajax({
+		url: '/application/addEvent',
+		type: "POST",
+		data: $('#existingContactSearchForm').serialize(),
+		success: function(data, textStatus, jXHR) {
+			
+		},
+		error: function(jXHR, textStatus, errorThrown) {
+			
+		}
+	});
+}
+
+/**
+ * Prevent default form action and submit with JS
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 18 Jun 2017
+ */
+$('#existingContactSearchForm').on('submit',function(e) {
+	e.preventDefault();
+    postAddEventData();
+});
