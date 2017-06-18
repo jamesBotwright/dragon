@@ -112,6 +112,24 @@ class EventsForm extends Form implements InputFilterProviderInterface
             'title' => [
                 'required' => true,
             ],
+            'description' => [
+                'required' => true,
+            ],
+            'location' => [
+                'required' => false,
+            ],
+            'contact' => [
+                'required' => false,
+            ],
+            'url' => [
+                'required' => false,
+            ],
+            'start' => [
+                'required' => true,
+            ],
+            'end' => [
+                'required' => true,
+            ],
         ];
     }
 }
