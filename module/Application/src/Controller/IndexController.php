@@ -67,7 +67,7 @@ class IndexController extends AbstractActionController
             $eventsForm->setData($request->getPost());
             $eventsForm->setInputFilter($eventsForm->getInputFilter());
             if($eventsForm->isValid()) {
-                
+                $calendarModel->persistFlush();
             } else {
                 $this->getResponse()->setStatusCode(401);
             }

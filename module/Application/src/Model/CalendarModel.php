@@ -46,4 +46,15 @@ class CalendarModel
         $eventsForm->bind($eventsEntity);
         return $eventsForm;
     }
+    
+    /**
+     * 
+     */
+    public function persistFlush()
+    {
+       $eventsEntity    = $this->eventsEntity;
+       $em              = $this->em;
+       $em->persist($eventsEntity);
+       $em->flush();
+    }
 }
