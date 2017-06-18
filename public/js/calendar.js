@@ -1,4 +1,13 @@
- /**
+/**
+ * Fade loading GIF when page loaded
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 26 May 2017
+ */
+$(window).load(function() {
+	$(".se-pre-con").fadeOut("slow");
+});
+
+/**
 * 
 * @param {type} param
 */
@@ -14,7 +23,6 @@ function onLoadFunction() {
        selectable: true,
        height:     450,
        dayClick:   function() {
-           alert('a day has been clicked!');
            $('#addEventModal').modal({backdrop: 'static', keyboard: false});
        },
 //            select:     function() {
@@ -33,6 +41,10 @@ function onLoadFunction() {
    });
 }
 
+/**
+ * 
+ * @returns {undefined}
+ */
 function addEvent() {
     
 }
