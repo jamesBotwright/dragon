@@ -24,7 +24,7 @@ function onLoadFunction() {
        height:     450,
        dayClick:   function() {
            $('#addEventModal').modal({backdrop: 'static', keyboard: false});
-       },
+       }
 //            select:     function() {
 //                alert('selected!');
 //            },
