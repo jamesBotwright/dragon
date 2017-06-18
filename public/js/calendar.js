@@ -68,6 +68,7 @@ function postAddEventData() {
 		},
 		error: function(jXHR, textStatus, errorThrown) {
 			if (jXHR.status == 401) {
+                alert(jXHR.responseText);
 				$("#existingContactSearchForm").html(jXHR.responseText);
 			}
 		}
