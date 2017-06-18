@@ -30,7 +30,7 @@ function onLoadFunction() {
        selectable: true,
        height:     450,
        dayClick:   function() {
-           $('#addEventModal').modal({backdrop: 'static', keyboard: false});
+           //$('#addEventModal').modal({backdrop: 'static', keyboard: false});
        },
 //            select:     function() {
 //                alert('selected!');
