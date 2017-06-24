@@ -8,7 +8,19 @@ class EventsRepository extends EntityRepository
 {
     public function getEvents()
     {
-        $events = [];
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('events')->from('Application\Entity\Events','events');
+//        ->where('events.dayOfWeekId = :dayOfWeekId')
+//        ->setParameter('dayOfWeekId', $dayOfWeekId);
+        
+        //SELECT * FROM events WHERE start >= FROM_UNIXTIME(:start) AND end < FROM_UNIXTIME(:end) ORDER BY start ASC
+        
+        try {
+            $query      = $qb->getQuery();
+            $events     = $query->getResults();
+        } catch (\Exception $e) {
+            echo 'Caught Exception: ' . $e->getMessage() . __METHOD__;
+        }
         return $events;
     }
 }
