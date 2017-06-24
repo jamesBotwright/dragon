@@ -12,22 +12,24 @@ class EventsRepository extends EntityRepository
      * @throws Exception
      * @return array
      **/
-    public function getEvents()
+    public function getEvents($startDate, $endDate)
     {
         try{
             $sql =
             "SELECT *
                 FROM events AS events
-                    
+                    WHERE events.start >= FROM _UNIXTIME(:start)
+                    AND events.end < FROM_UNIXTIME(:end)
                 ORDER BY events.start ASC
             ";
-            
-            //SELECT * FROM events WHERE start >= FROM_UNIXTIME(:start) AND end < FROM_UNIXTIME(:end) ORDER BY start ASC
             $stmt = $this->_em->getConnection()->prepare($sql);
+            $stmt->bindParam(':start', $startDate, \PDO::PARAM_INT);
+            $stmt->bindParam(':end', $endDate, \PDO::PARAM_INT);
             $stmt->execute();
             $results = $stmt->fetchAll();
         } catch (\Exception $e){
-            echo 'Caught exception: ' . $e->getMessage() . ' - ' . __METHOD__;
+            echo "Caught exception: " . $e->getMessage() . "\n\n" . __METHOD__ 
+                    . "\n\n Start Date = " . $startDate . ", End Date = " . $endDate;
         }
         return $results;
     }
