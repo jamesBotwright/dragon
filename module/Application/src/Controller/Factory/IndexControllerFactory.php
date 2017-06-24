@@ -21,7 +21,12 @@ class IndexControllerFactory
     {
         $applicationModel   = $container->get('applicationModel');
         $calendarModel      = $container->get('calendarModel');
-        $controller         = new \Application\Controller\IndexController($applicationModel, $calendarModel);
+        $songsModel         = $container->get('songsModel');
+        $controller         = new \Application\Controller\IndexController(
+            $applicationModel, 
+            $calendarModel,
+            $songsModel
+        );
         return $controller;
     }
 }
