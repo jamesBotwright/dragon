@@ -17,7 +17,7 @@ class EventsRepository extends EntityRepository
         try{
             $sql =
             "SELECT *
-                FROM Events AS events
+                FROM events AS events
                     
                 ORDER BY events.start ASC
             ";
