@@ -29,7 +29,7 @@ class EventsRepository extends EntityRepository
             $results = $stmt->fetchAll();
         } catch (\Exception $e){
             echo "Caught exception: " . $e->getMessage() . "\n\n" . __METHOD__ 
-                    . "\n\n Start Date = " . $startDate . ", End Date = " . $endDate;
+                    . "\n\n Start Date = " . $startDate . ", End Date = " . $endDate . ",  ";
         }
         return $results;
     }
