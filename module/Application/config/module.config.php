@@ -69,6 +69,7 @@ return [
         'factories' => [
                 'applicationModel'  => Model\Factory\ApplicationModelFactory::class,
                 'calendarModel'     => Model\Factory\CalendarModelFactory::class,
+                'songsModel'        => Model\Factory\SongsModelFactory::class,
             ],
     ],
     'view_manager' => [

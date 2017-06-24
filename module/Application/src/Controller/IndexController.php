@@ -24,14 +24,21 @@ class IndexController extends AbstractActionController
     private $calendarModel;
     
     /**
+     * @var object $songsModel
+     */
+    private $songsModel;
+    
+    /**
      * 
      */
     public function __construct(
         $applicationModel, 
-        $calendarModel
+        $calendarModel,
+        $songsModel
     ) {
         $this->applicationModel = $applicationModel;
         $this->calendarModel    = $calendarModel;
+        $this->songsModel       = $songsModel;
     }
     
     /**
