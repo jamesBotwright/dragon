@@ -5,8 +5,6 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Events
- *
  * @ORM\Table(name="Song_Status")
  * @ORM\Entity(repositoryClass="Application\Repository\SongStatusRepository")
  */
