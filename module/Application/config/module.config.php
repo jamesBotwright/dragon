@@ -48,6 +48,16 @@ return [
                     ],
                 ],
             ],
+            'songs' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/songs[/:id]',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'songs',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
