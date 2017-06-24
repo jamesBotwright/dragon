@@ -25,7 +25,31 @@ class SongsModel
     /**
      * 
      */
-    public function getAllSongs()
+    public function getAllSuggestedSongs()
+    {
+        return [];
+    }
+    
+    /**
+     * 
+     */
+    public function getAllSetListSongs()
+    {
+        return [];
+    }
+    
+    /**
+     * 
+     */
+    public function getAllReserveSongs()
+    {
+        return [];
+    }
+    
+    /**
+     * 
+     */
+    public function getAllRemovedSongs()
     {
         return [];
     }
