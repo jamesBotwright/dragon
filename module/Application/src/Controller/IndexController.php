@@ -59,8 +59,9 @@ class IndexController extends AbstractActionController
     {
         $calendarModel  = $this->calendarModel;
         $request        = $this->getRequest();
-        $startDate      = $request->getQuery('start');
-        $endDate        = $request->getQuery('end');
+        $postArray      = $request->getPost();
+        $startDate      = $postArray['start'];
+        $endDate        = $postArray['end'];
         $events         = $calendarModel->getEvents($startDate, $endDate);
         return new JsonModel($events);
     }
