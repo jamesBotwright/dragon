@@ -18,8 +18,8 @@ class EventsRepository extends EntityRepository
             $sql =
             "SELECT *
                 FROM events AS events
-                    WHERE events.start >= FROM_UNIXTIME(:start)
-                    AND events.end < FROM_UNIXTIME(:end)
+                    WHERE events.start >= :start
+                    AND events.end < FROM_:end
                 ORDER BY events.start ASC
             ";
             $stmt = $this->_em->getConnection()->prepare($sql);
