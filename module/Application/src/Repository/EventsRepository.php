@@ -17,7 +17,7 @@ class EventsRepository extends EntityRepository
         try{
             $sql =
             "SELECT *
-                FROM events AS events
+                FROM Events AS events
                     WHERE events.start >= :start
                     AND events.end < :end
                 ORDER BY events.start ASC

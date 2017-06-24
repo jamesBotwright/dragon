@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Events
  *
- * @ORM\Table(name="events")
+ * @ORM\Table(name="Events")
  * @ORM\Entity(repositoryClass="Application\Repository\EventsRepository")
  */
 class Events
