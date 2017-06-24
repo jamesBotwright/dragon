@@ -18,7 +18,7 @@ class EventsRepository extends EntityRepository
             $sql =
             "SELECT *
                 FROM events AS events
-                    WHERE events.start >= FROM _UNIXTIME(:start)
+                    WHERE events.start >= FROM_UNIXTIME(:start)
                     AND events.end < FROM_UNIXTIME(:end)
                 ORDER BY events.start ASC
             ";
