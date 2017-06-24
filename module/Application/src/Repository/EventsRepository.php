@@ -23,8 +23,8 @@ class EventsRepository extends EntityRepository
                 ORDER BY events.start ASC
             ";
             $stmt = $this->_em->getConnection()->prepare($sql);
-            $stmt->bindParam(':start', $startDate, \PDO::PARAM_INT);
-            $stmt->bindParam(':end', $endDate, \PDO::PARAM_INT);
+            $stmt->bindParam(':start', $startDate);
+            $stmt->bindParam(':end', $endDate);
             $stmt->execute();
             $results = $stmt->fetchAll();
         } catch (\Exception $e){
