@@ -50,6 +50,17 @@ class CalendarModel
     /**
      * 
      */
+    public function getEvents()
+    {
+        $em = $this->em;
+        $eventsRepo = $em->getRepository('Application\Entity\Events');
+        $events     = $eventsRepo->getEvents();
+        return $events;
+    }
+    
+    /**
+     * 
+     */
     public function persistFlush()
     {
        $eventsEntity    = $this->eventsEntity;

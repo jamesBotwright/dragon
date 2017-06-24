@@ -58,8 +58,12 @@ class IndexController extends AbstractActionController
     public function getEventsAction()
     {
         $calendarModel   = $this->calendarModel;
+        $events          = $calendarModel->getEvents();
+        
+        //$bomRuleType = $this->params()->fromRoute('bomRuleType');
+        
         return new JsonModel([
-            
+            'events' => $events,
         ]);
     }
     
