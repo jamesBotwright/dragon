@@ -62,9 +62,7 @@ class IndexController extends AbstractActionController
         
         //$bomRuleType = $this->params()->fromRoute('bomRuleType');
         
-        return new JsonModel([
-            'events' => $events,
-        ]);
+        return new JsonModel($events);
     }
     
     /**
