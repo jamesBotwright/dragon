@@ -27,26 +27,23 @@ $(document).ready(onLoadFunction)
  */
 function onLoadFunction() {        
     $('#calendar').fullCalendar({
-       editable:   true,
-       selectable: true,
-       height:     450,
-       dayClick:   function() {
-           $('#add-event-modal').modal({backdrop: 'static', keyboard: false});
-       }
-//            select:     function() {
-//                alert('selected!');
-//            },
-//       events: '/api',
-//       eventDataTransform: function (rawEventData) {
-//           return {
-//               id: rawEventData.id,
-//               title: rawEventData.title,
-//               start: rawEventData.start,
-//               end: rawEventData.end,
-//               url: rawEventData.url
-//           };
-//       }
-   });
+        editable:   true,
+        selectable: true,
+        height:     450,
+        dayClick:   function() {
+            $('#add-event-modal').modal({backdrop: 'static', keyboard: false});
+        },
+        events: '/calendar/getEvents',
+        eventDataTransform: function (rawEventData) {
+            return {
+                id: rawEventData.id,
+                title: rawEventData.title,
+                start: rawEventData.start,
+                end: rawEventData.end,
+                url: rawEventData.url
+            };
+        }
+    });
 }
 
 /**

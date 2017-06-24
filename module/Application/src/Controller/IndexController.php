@@ -55,6 +55,14 @@ class IndexController extends AbstractActionController
         ];
     }
     
+    public function getEventsAction()
+    {
+        $calendarModel   = $this->calendarModel;
+        return new JsonModel([
+            
+        ]);
+    }
+    
     /**
      * 
      */
