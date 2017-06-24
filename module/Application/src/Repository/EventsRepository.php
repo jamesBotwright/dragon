@@ -17,7 +17,7 @@ class EventsRepository extends EntityRepository
         
         try {
             $query      = $qb->getQuery();
-            $events     = $query->getResults();
+            $events     = $query->getResult();
         } catch (\Exception $e) {
             echo 'Caught Exception: ' . $e->getMessage() . __METHOD__;
         }
