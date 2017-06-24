@@ -20,7 +20,7 @@ function onLoadFunction() {
     $('#calendar').fullCalendar({
         editable:   true,
         selectable: true,
-        height:     450,
+        height:     550,
         dayClick:   function() {
             $('#add-event-modal').modal({backdrop: 'static', keyboard: false});
         },
