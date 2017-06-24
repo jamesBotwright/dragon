@@ -61,7 +61,7 @@ function postAddEventData() {
 		type: "POST",
 		data: $('#eventsForm').serialize(),
 		success: function(data, textStatus, jXHR) {
-			
+			$('#calendar').fullCalendar('refetchEvents');
 		},
 		error: function(jXHR, textStatus, errorThrown) {
 			if (jXHR.status == 401) {
