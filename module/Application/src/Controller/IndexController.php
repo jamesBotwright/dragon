@@ -55,10 +55,10 @@ class IndexController extends AbstractActionController
      */
     public function songsAction()
     {
-        $calendarModel   = $this->calendarModel;
-        $eventsForm      = $calendarModel->getEventsForm();
+        $songsModel     = $this->songsModel;
+        $songs          = $songsModel->getAllSongs();
         return [
-            'eventsForm'   => $eventsForm,
+            'songs'   => $songs,
         ];
     }
     

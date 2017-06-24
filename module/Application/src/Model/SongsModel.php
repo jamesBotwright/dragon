@@ -22,4 +22,11 @@ class SongsModel
         $this->em           = $em;
     }
     
+    /**
+     * 
+     */
+    public function getAllSongs()
+    {
+        return [];
+    }
 }
