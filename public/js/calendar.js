@@ -33,7 +33,7 @@ function onLoadFunction() {
         dayClick:   function() {
             $('#add-event-modal').modal({backdrop: 'static', keyboard: false});
         },
-        events: '/calendar/getEvents',
+        events: '/application/getEvents',
         eventDataTransform: function (rawEventData) {
             return {
                 id: rawEventData.id,
