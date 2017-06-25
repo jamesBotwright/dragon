@@ -33,6 +33,14 @@ function onLoadFunction() {
                 end: rawEventData.end,
                 url: rawEventData.url
             };
+        },
+        eventClick: function(calEvent, jsEvent, view) {
+            alert('Event: ' + calEvent.title);
+            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+            alert('View: ' + view.name);
+
+            // change the border color just for fun
+            $(this).css('border-color', 'red');
         }
     });
     $(".se-pre-con").fadeOut("slow");
