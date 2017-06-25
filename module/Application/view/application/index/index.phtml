@@ -31,18 +31,20 @@
                 <?php if(is_array($this->upcomingEvents)): ?>
                 <?php foreach($this->upcomingEvents as $upcomingEvent): ?>
                     <div class="well">
-                        <div class="col-md-12">    
-                            <strong>Title: </strong><?php echo $this->escapeHtml($upcomingEvent['title']);?>
-                        </div>            
-                        <div class="col-md-12">    
-                            <strong>Description: </strong><?php echo $this->escapeHtml($upcomingEvent['description']);?>
-                        </div>            
-                        <div class="col-md-12">    
-                            <strong>Location: </strong><?php echo $this->escapeHtml($upcomingEvent['location']);?>
-                        </div>            
-                        <div class="col-md-12">    
-                            <strong>Start: </strong><?php echo $this->escapeHtml($upcomingEvent['start']);?>
-                        </div>            
+                        <div class="row">
+                            <div class="col-md-12">    
+                                <strong>Title: </strong><?php echo $this->escapeHtml($upcomingEvent['title']);?>
+                            </div>            
+                            <div class="col-md-12">    
+                                <strong>Description: </strong><?php echo $this->escapeHtml($upcomingEvent['description']);?>
+                            </div>            
+                            <div class="col-md-12">    
+                                <strong>Location: </strong><?php echo $this->escapeHtml($upcomingEvent['location']);?>
+                            </div>            
+                            <div class="col-md-12">    
+                                <strong>Start: </strong><?php echo $this->escapeHtml($upcomingEvent['start']);?>
+                            </div>            
+                        </div>
                     </div>
                 <?php endforeach; ?>
                 <?php endif; ?>
