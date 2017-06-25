@@ -33,7 +33,7 @@ class SongsForm extends Form implements InputFilterProviderInterface
                 'object_manager' => $objectManager,
                 'target_class' => 'Application\Entity\SongStatus',
                 'allow_add' => true,
-                'property' => 'Description',
+                'property' => 'description',
                 'find_method' => [
                     'name' => 'findAll',
                 ],
