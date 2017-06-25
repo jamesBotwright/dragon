@@ -16,6 +16,7 @@
         </div>
         <div class="modal-body"> 
             <?php echo $this->formHidden($form->get('id'));?>
+            <?php echo $this->formHidden($form->get('url'));?>
             <h4>Event Details</h4>
             <div class="form-horizontal">
                 <div class="form-group">
@@ -52,13 +53,6 @@
                         <?php echo $this->formLabel($form->get('contact'));?>
                         <?php echo $this->formText($form->get('contact'));?>
                         <?php echo $this->FormElementErrors($form->get('contact'));?>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <?php echo $this->formLabel($form->get('url'));?>
-                        <?php echo $this->formText($form->get('url'));?>
-                        <?php echo $this->FormElementErrors($form->get('url'));?>
                     </div>
                 </div>
             </div>
