@@ -29,16 +29,21 @@ function onLoadFunction() {
             return {
                 id: rawEventData.id,
                 title: rawEventData.title,
+                description: rawEventData.description,
+                location: rawEventData.location,
                 start: rawEventData.start,
                 end: rawEventData.end,
                 url: rawEventData.url
             };
         },
         eventClick: function(calEvent, jsEvent, view) {
-            alert('Event: ' + calEvent.title);
-            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            alert('View: ' + view.name);
-
+            alert("Event: " + calEvent.title + "\n\n"
+                + "Description: " + calEvent.description + "\n\n"
+                + "Location: " + calEvent.location + "\n\n"
+                + "Start: " + calEvent.start + "\n\n"
+                + "End: " + calEvent.end + "\n\n"
+            );
+            
             // change the border color just for fun
             $(this).css('border-color', 'red');
             return false;
