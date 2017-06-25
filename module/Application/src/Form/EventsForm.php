@@ -26,7 +26,8 @@ class EventsForm extends Form implements InputFilterProviderInterface
         $this->add([
             'name' => 'title',
             'attributes' => [
-                'type' => 'text',
+                'id'    => 'title',
+                'type'  => 'text',
                 'class' => 'form-control input-sm',
             ],
             'options' => [
@@ -37,6 +38,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
         $this->add([
             'name' => 'description',
             'attributes' => [
+                'id'    => 'description',
                 'type' => 'text',
                 'class' => 'form-control input-sm',
             ],
@@ -48,6 +50,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
         $this->add([
             'name' => 'location',
             'attributes' => [
+                'id'    => 'location',
                 'type' => 'text',
                 'class' => 'form-control input-sm',
             ],
@@ -59,6 +62,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
         $this->add([
             'name' => 'contact',
             'attributes' => [
+                'id'    => 'contact',
                 'type' => 'text',
                 'class' => 'form-control input-sm',
             ],
@@ -82,6 +86,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
             'name' => 'start',
             'type' => 'Zend\Form\Element\DateTime',
             'attributes' => [
+                'id'    => 'start',
                 'class' => 'datepicker form-control input-sm hasDatepicker',
             ],
             'options' => [
@@ -94,6 +99,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
             'name' => 'end',
             'type' => 'Zend\Form\Element\DateTime',
             'attributes' => [
+                'id'    => 'end',
                 'class' => 'datepicker form-control input-sm hasDatepicker',
             ],
             'options' => [
