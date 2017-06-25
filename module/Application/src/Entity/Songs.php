@@ -39,7 +39,7 @@ class Songs
     /**
      * @var string
      *
-     * @ORM\Column(name="Song_Status_ID", type="string", length=50, nullable=true)
+     * @ORM\Column(name="Song_Artist", type="string", length=50, nullable=true)
      */
     private $songArtist;
     
