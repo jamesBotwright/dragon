@@ -19,17 +19,15 @@
             'setListSongs' => $this->setListSongs, 
         ]); ?>
     </div>
-    <div class="col-md-12">
-        <div class="col-md-6">
-        	<?php echo $this->partial('application/index/partial/reserved-songs-table.phtml', [
-                'reservedSongs' => $this->reservedSongs, 
-            ]); ?>
-    	</div>
-        <div class="col-md-6">
-        	<?php echo $this->partial('application/index/partial/removed-songs-table.phtml', [
-                'removedSongs' => $this->removedSongs, 
-            ]); ?>
-    	</div>
+    <div class="col-md-6">
+        <?php echo $this->partial('application/index/partial/reserved-songs-table.phtml', [
+            'reservedSongs' => $this->reservedSongs, 
+        ]); ?>
+    </div>
+    <div class="col-md-6">
+        <?php echo $this->partial('application/index/partial/removed-songs-table.phtml', [
+            'removedSongs' => $this->removedSongs, 
+        ]); ?>
     </div>
 </div>
 
