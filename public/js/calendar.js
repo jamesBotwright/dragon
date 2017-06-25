@@ -22,8 +22,13 @@ function onLoadFunction() {
         selectable: true,
         height:     550,
         dayClick:   function(date) {
-            $('#start').val(date.format());
-            //$('#end').val(date.format());
+            
+            var dateControl = document.querySelector('input[type="datetime-local"]');
+            date.value = '2017-06-01T08:30';
+            
+            
+            $('#start').val(date.format() + 'T12:00');
+            $('#end').value = date.format() +  'T12:00';
             $('#add-event-modal').modal({backdrop: 'static', keyboard: false});
         },
         events: '/application/getEvents',
