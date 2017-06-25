@@ -39,11 +39,11 @@ function onLoadFunction() {
             };
         },
         eventClick: function(calEvent, jsEvent, view) {
-            $('#event-title').val(calEvent.title);
-            $('#event-description').val(calEvent.description);
-            $('#event-location').val(calEvent.location);
-            $('#event-title').val(calEvent.start);
-            $('#event-title').val(calEvent.end);
+            $('#event-title').html(calEvent.title);
+            $('#event-description').html(calEvent.description);
+            $('#event-location').html(calEvent.location);
+            $('#event-title').html(calEvent.start);
+            $('#event-title').html(calEvent.end);
             $('#event-details-modal').modal({backdrop: 'static', keyboard: false});
             return false;
         }
