@@ -90,7 +90,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
                 'class' => 'datepicker form-control input-sm hasDatepicker',
             ],
             'options' => [
-                'format'    => 'Y-m-d 00:00',
+                'format'    => 'Y-m-d\TH:iP',
                 'label'     => 'Start Date',
             ],
         ]);
