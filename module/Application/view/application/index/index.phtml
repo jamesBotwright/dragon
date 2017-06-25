@@ -31,9 +31,18 @@
                 <?php if(is_array($this->upcomingEvents)): ?>
                 <?php foreach($this->upcomingEvents as $upcomingEvent): ?>
                     <div class="col-md-12">    
-                        <?php echo $this->escapeHtml($upcomingEvent['title'] . ' - ' . $upcomingEvent['description']
-                                . ' ' . $upcomingEvent['location'] . ' ' . $upcomingEvent['start']); ?>
-                    </div>
+                        <strong>Title: </strong><?php echo $this->escapeHtml($upcomingEvent['title']);?>
+                    </div>            
+                    <div class="col-md-12">    
+                        <strong>Description: </strong><?php echo $this->escapeHtml($upcomingEvent['description']);?>
+                    </div>            
+                    <div class="col-md-12">    
+                        <strong>Location: </strong><?php echo $this->escapeHtml($upcomingEvent['location']);?>
+                    </div>            
+                    <div class="col-md-12">    
+                        <strong>Start: </strong><?php echo $this->escapeHtml($upcomingEvent['start']);?>
+                    </div>            
+                    <hr>
                 <?php endforeach; ?>
                 <?php endif; ?>
             </div>
