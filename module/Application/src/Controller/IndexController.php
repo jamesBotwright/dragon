@@ -73,6 +73,32 @@ class IndexController extends AbstractActionController
     /**
      * 
      */
+    public function addSongAction()
+    {
+        $songsModel      = $this->songsModel;
+        $addSongForm     = $songsModel->getAddSongForm();
+        $request         = $this->getRequest();
+        if($request->IsPost()) {
+            $addSongForm->setData($request->getPost());
+            $addSongForm->setInputFilter($addSongForm->getInputFilter());
+            if($addSongForm->isValid()) {
+                $songsModel->persistFlush();
+            } else {
+                $this->getResponse()->setStatusCode(401);
+            }
+        }
+        $viewModel = new ViewModel();
+        $viewModel->setVariables([
+                'addSongForm'   => $addSongForm,
+            ])
+            ->setTemplate('application/index/partial/suggested-songs-table.phtml')
+            ->setTerminal(true);
+        return $viewModel;
+    }
+    
+    /**
+     * 
+     */
     public function calendarAction()
     {
         $calendarModel   = $this->calendarModel;

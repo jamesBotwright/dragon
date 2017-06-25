@@ -58,4 +58,15 @@ class SongsModel
         $songs              = $songsRepository->getSongsByStatus($status);
         return $songs;
     }
+    
+    /**
+     * 
+     */
+    public function persistFlush()
+    {
+       $songsEntity    = $this->songsEntity;
+       $em             = $this->em;
+       $em->persist($songsEntity);
+       $em->flush();
+    }
 }

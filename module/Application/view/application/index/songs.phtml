@@ -7,10 +7,12 @@
 
 <div class="row">
     <div class="col-md-12">
-        <?php echo $this->partial('application/index/partial/suggested-songs-table.phtml', [
-            'suggestedSongs' => $this->suggestedSongs, 
-            'addSongForm'    => $this->addSongForm,
-        ]); ?>
+        <div id="suggested-songs-table">
+            <?php echo $this->partial('application/index/partial/suggested-songs-table.phtml', [
+                'suggestedSongs' => $this->suggestedSongs, 
+                'addSongForm'    => $this->addSongForm,
+            ]); ?>
+        </div>
     </div>
     <div class="col-md-12">
         <?php echo $this->partial('application/index/partial/set-list-songs-table.phtml', [

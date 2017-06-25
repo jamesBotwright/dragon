@@ -58,7 +58,7 @@ class SongsForm extends Form implements InputFilterProviderInterface
                 'class' => 'form-control input-sm',
             ],
             'options' => [
-                'label' => 'songArtist',
+                'label' => 'Artist',
             ],
         ]);
         
