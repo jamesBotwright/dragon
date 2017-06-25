@@ -47,7 +47,11 @@ class IndexController extends AbstractActionController
      */
     public function indexAction()
     {
-        return new ViewModel();
+        $calendarModel   = $this->calendarModel;
+        $upcomingEvents  = $calendarModel->getUpcomingEvents(3);
+        return [
+            'upcomingEvents' => $upcomingEvents,
+        ];
     }
     
     /**

@@ -39,6 +39,17 @@ class CalendarModel
     /**
      * 
      */
+    public function getUpcomingEvents($numberOfEvents = 3)
+    {
+        $em         = $this->em;
+        $eventsRepo = $em->getRepository('Application\Entity\Events');
+        $events     = $eventsRepo->getUpcomingEvents($numberOfEvents);
+        return $events;
+    }
+    
+    /**
+     * 
+     */
     public function getEventsForm()
     {
         $eventsEntity   = $this->eventsEntity;

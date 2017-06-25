@@ -28,7 +28,11 @@
                 <h4 class="panel-title">Upcoming Events</h4>
             </div>
             <div class="panel-body">
-                <h3>Practice - Sunday 2nd July @ 12</h3>
+                <?php if(is_array($this->upcomingEvents)): ?>
+                <?php foreach($this->upcomingEvents as $upcomingEvent): ?>
+                        <?php echo $this->escapeHtml($upcomingEvent['title']); ?>
+                <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
