@@ -38,10 +38,8 @@ $('#add-song-form').on('submit',function(e) {
 	e.preventDefault();
 	submitAddSongForm()
 	.done(function() {
-        refreshSuggestedSongs().done(function() {
-            onLoadFunction();
-        });
-	});
+
+    });
 });
 
 /**
