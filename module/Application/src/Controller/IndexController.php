@@ -83,13 +83,16 @@ class IndexController extends AbstractActionController
             $addSongForm->setInputFilter($addSongForm->getInputFilter());
             if($addSongForm->isValid()) {
                 $songsModel->persistFlush();
+                $suggestedSongs = $songsModel->getSongsByStatus('Suggested');
             } else {
                 $this->getResponse()->setStatusCode(401);
+                $suggestedSongs = $songsModel->getSongsByStatus('Suggested');
             }
         }
         $viewModel = new ViewModel();
         $viewModel->setVariables([
-                'addSongForm'   => $addSongForm,
+                'addSongForm'       => $addSongForm,
+                'suggestedSongs'    => $suggestedSongs,
             ])
             ->setTemplate('application/index/partial/suggested-songs-table.phtml')
             ->setTerminal(true);
