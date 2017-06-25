@@ -1,3 +1,11 @@
+<?php
+    $form = $this->addSongForm;
+    $form->setAttribute('name', 'addSongForm');
+    $form->setAttribute('id', 'addSongForm');
+    $form->prepare();
+    echo $this->form()->openTag($form);
+?>
+
 <div id="suggest-songs">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -6,7 +14,26 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">
-                    
+                    <div class="form-horizontal">
+                        <?php echo $this->formHidden($form->get('songStatus'));?>
+                        <?php echo $this->formHidden($form->get('recordActive'));?>
+                        <div class="form-group">
+                            <div class="col-md-6 col-lg-6">
+                                <?php echo $this->formLabel($form->get('songName'));?>
+                                <?php echo $this->formText($form->get('songName'));?>
+                                <?php echo $this->FormElementErrors($form->get('songName'));?>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <?php echo $this->formLabel($form->get('songArtist'));?>
+                                <?php echo $this->formText($form->get('songArtist'));?>
+                                <?php echo $this->FormElementErrors($form->get('songArtist'));?>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" title="submit" id="addSongSubmitButton">
+                        <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Add Song Suggestion
+                    </button>
+                
                 </div>
             </div>
         </div>
@@ -41,3 +68,5 @@
         </div>
     </div>
 </div>
+
+<?php echo $this->form()->closeTag();
