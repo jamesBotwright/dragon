@@ -43,9 +43,6 @@ function onLoadFunction() {
                 + "Start: " + new Date(calEvent.start) + "\n\n"
                 + "End: " + new Date(calEvent.end) + "\n\n"
             );
-            
-            // change the border color just for fun
-            $(this).css('border-color', 'red');
             return false;
         }
     });
