@@ -45,6 +45,10 @@ class SongsModel
         $songsForm      = $this->songsForm;
         $songsEntity    = $this->songsEntity;
         $songsForm->bind($songsEntity);
+        $songsForm->get('songName')->setValue(null);
+        $songsForm->get('songArtist')->setValue(null);
+        $songsForm->get('songStatus')->setValue(1);
+        $songsForm->get('recordActive')->setValue(true);
         return $songsForm;
     }
     
