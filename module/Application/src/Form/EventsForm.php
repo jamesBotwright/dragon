@@ -84,28 +84,28 @@ class EventsForm extends Form implements InputFilterProviderInterface
         
         $this->add([
             'name' => 'start',
-            'type' => 'Zend\Form\Element\DateTime',
+            'type' => 'Zend\Form\Element\DateTimeLocal',
             'attributes' => [
                 'id'    => 'start',
                 'class' => 'datepicker form-control input-sm hasDatepicker',
                 'step'  => 'any',
             ],
             'options' => [
-                'format'    => 'Y-m-d H:i:s',
+                'format'    => 'Y-m-d H:i',
                 'label'     => 'Start Date',
             ],
         ]);
         
         $this->add([
             'name' => 'end',
-            'type' => 'Zend\Form\Element\DateTime',
+            'type' => 'Zend\Form\Element\DateTimeLocal',
             'attributes' => [
                 'id'    => 'end',
                 'class' => 'datepicker form-control input-sm hasDatepicker',
                 'step'  => 'any',
             ],
             'options' => [
-                'format'    => 'Y-m-d H:i:s',
+                'format'    => 'Y-m-d H:i',
                 'label'     => 'Start Date',
             ],
         ]);

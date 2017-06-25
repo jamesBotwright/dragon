@@ -22,12 +22,12 @@
                 <div class="form-group">
                     <div class="col-md-6">
                         <?php echo $this->formLabel($form->get('start'));?>
-                        <?php echo $this->formDate($form->get('start'));?>
+                        <?php echo $this->formDateTimeLocal($form->get('start'));?>
                         <?php echo $this->FormElementErrors($form->get('start'));?>
                     </div>
                     <div class="col-md-6">
                         <?php echo $this->formLabel($form->get('end'));?>
-                        <?php echo $this->formDate($form->get('end'));?>
+                        <?php echo $this->formDateTimeLocal($form->get('end'));?>
                         <?php echo $this->FormElementErrors($form->get('end'));?>
                     </div>
                 </div>
