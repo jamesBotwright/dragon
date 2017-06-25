@@ -41,7 +41,7 @@ function onLoadFunction() {
                 + "Description: " + calEvent.description + "\n\n"
                 + "Location: " + calEvent.location + "\n\n"
                 + "Start: " + new Date(calEvent.start) + "\n\n"
-                + "End: " + calEvent.end + "\n\n"
+                + "End: " + new Date(calEvent.end) + "\n\n"
             );
             
             // change the border color just for fun
