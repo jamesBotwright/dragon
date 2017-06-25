@@ -30,7 +30,10 @@
             <div class="panel-body">
                 <?php if(is_array($this->upcomingEvents)): ?>
                 <?php foreach($this->upcomingEvents as $upcomingEvent): ?>
-                        <?php echo $this->escapeHtml($upcomingEvent['title']); ?>
+                    <div class="col-md-12">    
+                        <?php echo $this->escapeHtml($upcomingEvent['title'] . ' - ' . $upcomingEvent['description']
+                                . ' ' . $upcomingEvent['location'] . ' ' . $upcomingEvent['start']); ?>
+                    </div>
                 <?php endforeach; ?>
                 <?php endif; ?>
             </div>
