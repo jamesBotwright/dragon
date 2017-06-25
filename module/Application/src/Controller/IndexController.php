@@ -84,6 +84,7 @@ class IndexController extends AbstractActionController
             if($addSongForm->isValid()) {
                 $songsModel->persistFlush();
                 $suggestedSongs = $songsModel->getSongsByStatus('Suggested');
+                $addSongForm    = $songsModel->getAddSongForm();
             } else {
                 $this->getResponse()->setStatusCode(401);
                 $suggestedSongs = $songsModel->getSongsByStatus('Suggested');
