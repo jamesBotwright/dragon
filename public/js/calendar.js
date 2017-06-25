@@ -42,8 +42,8 @@ function onLoadFunction() {
             $('#event-title').val(calEvent.title);
             $('#event-description').val(calEvent.description);
             $('#event-location').val(calEvent.location);
-            $('#event-title').start(calEvent.start);
-            $('#event-title').end(calEvent.end);
+            $('#event-title').val(calEvent.start);
+            $('#event-title').val(calEvent.end);
             $('#event-details-modal').modal({backdrop: 'static', keyboard: false});
             return false;
         }
