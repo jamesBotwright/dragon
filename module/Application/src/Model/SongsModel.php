@@ -27,7 +27,10 @@ class SongsModel
      */
     public function getAllSuggestedSongs()
     {
-        return [];
+        $em                 = $this->em;
+        $songsRepository    = $em->getRepository('Application\Entity\Songs');
+        $songs              = $songsRepository->getAllSuggestedSongs('Suggested');
+        return $songs;
     }
     
     /**
@@ -35,7 +38,10 @@ class SongsModel
      */
     public function getAllSetListSongs()
     {
-        return [];
+        $em                 = $this->em;
+        $songsRepository    = $em->getRepository('Application\Entity\Songs');
+        $songs              = $songsRepository->getAllSuggestedSongs('Set List');
+        return $songs;
     }
     
     /**
@@ -43,7 +49,10 @@ class SongsModel
      */
     public function getAllReserveSongs()
     {
-        return [];
+        $em                 = $this->em;
+        $songsRepository    = $em->getRepository('Application\Entity\Songs');
+        $songs              = $songsRepository->getAllSuggestedSongs('Reserved');
+        return $songs;
     }
     
     /**
@@ -51,6 +60,9 @@ class SongsModel
      */
     public function getAllRemovedSongs()
     {
-        return [];
+        $em                 = $this->em;
+        $songsRepository    = $em->getRepository('Application\Entity\Songs');
+        $songs              = $songsRepository->getAllSuggestedSongs('Removed');
+        return $songs;
     }
 }
