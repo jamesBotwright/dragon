@@ -18,22 +18,23 @@
                         <?php echo $this->formHidden($form->get('songStatus'));?>
                         <?php echo $this->formHidden($form->get('recordActive'));?>
                         <div class="form-group">
-                            <div class="col-md-6 col-lg-6">
+                            <div class="col-md-5">
                                 <?php echo $this->formLabel($form->get('songName'));?>
                                 <?php echo $this->formText($form->get('songName'));?>
                                 <?php echo $this->FormElementErrors($form->get('songName'));?>
                             </div>
-                            <div class="col-md-6 col-lg-6">
+                            <div class="col-md-5">
                                 <?php echo $this->formLabel($form->get('songArtist'));?>
                                 <?php echo $this->formText($form->get('songArtist'));?>
                                 <?php echo $this->FormElementErrors($form->get('songArtist'));?>
                             </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary" title="submit" id="addSongSubmitButton">
+                                    <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Add Song Suggestion
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" title="submit" id="addSongSubmitButton">
-                        <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Add Song Suggestion
-                    </button>
-                
                 </div>
             </div>
         </div>
