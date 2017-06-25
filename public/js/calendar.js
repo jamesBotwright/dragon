@@ -39,12 +39,12 @@ function onLoadFunction() {
             };
         },
         eventClick: function(calEvent, jsEvent, view) {
-            alert("Event: " + calEvent.title + "\n\n"
-                + "Description: " + calEvent.description + "\n\n"
-                + "Location: " + calEvent.location + "\n\n"
-                + "Start: " + new Date(calEvent.start) + "\n\n"
-                + "End: " + new Date(calEvent.end) + "\n\n"
-            );
+            $('#event-title').val(calEvent.title);
+            $('#event-description').val(calEvent.description);
+            $('#event-location').val(calEvent.location);
+            $('#event-title').start(calEvent.start);
+            $('#event-title').end(calEvent.end);
+            $('#event-details-modal').modal({backdrop: 'static', keyboard: false});
             return false;
         }
     });
@@ -69,7 +69,7 @@ function addEvent() {
  * @version v1.0 25 Jun 2017
  */
 function editEvent() {
-    
+    alert('Sorry not implemented yet!');
 }
 
 /**
@@ -78,7 +78,7 @@ function editEvent() {
  * @version v1.0 25 Jun 2017
  */
 function deleteEvent() {
-    
+    alert('Sorry not implemented yet!');
 }
 
 /**
