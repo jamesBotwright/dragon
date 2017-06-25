@@ -20,8 +20,12 @@ class SongsModelFactory
     public function __invoke($serviceLocator)
     {
         $em             = $serviceLocator->get('doctrine.entitymanager.orm_default');
+        $songsForm      = new \Application\Form\SongsForm($em);
+        $songsEntity    = new \Application\Entity\Songs();
         $songsModel     = new \Application\Model\SongsModel(
-            $em
+            $em,
+            $songsForm,
+            $songsEntity
         );
         return $songsModel;
     }

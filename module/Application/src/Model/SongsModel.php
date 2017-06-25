@@ -14,55 +14,48 @@ class SongsModel
     private $em;
     
     /**
+     * @var object 
+     */
+    private $songsForm;
+    
+    /**
+     * @var object 
+     */
+    private $songsEntity;
+    
+    /**
      * @param object $em
      */
     public function __construct(
-        $em
+        $em,
+        $songsForm,
+        $songsEntity
+            
     ) {
         $this->em           = $em;
+        $this->songsForm    = $songsForm;
+        $this->songsEntity  = $songsEntity;
     }
     
     /**
      * 
      */
-    public function getAllSuggestedSongs()
+    public function getAddSongForm()
     {
-        $em                 = $this->em;
-        $songsRepository    = $em->getRepository('Application\Entity\Songs');
-        $songs              = $songsRepository->getAllSuggestedSongs('Suggested');
-        return $songs;
+        $songsForm      = $this->songsForm;
+        $songsEntity    = $this->songsEntity;
+        $songsForm->bind($songsEntity);
+        return $songsForm;
     }
     
     /**
      * 
      */
-    public function getAllSetListSongs()
+    public function getSongsByStatus($status)
     {
         $em                 = $this->em;
         $songsRepository    = $em->getRepository('Application\Entity\Songs');
-        $songs              = $songsRepository->getAllSuggestedSongs('Set List');
-        return $songs;
-    }
-    
-    /**
-     * 
-     */
-    public function getAllReserveSongs()
-    {
-        $em                 = $this->em;
-        $songsRepository    = $em->getRepository('Application\Entity\Songs');
-        $songs              = $songsRepository->getAllSuggestedSongs('Reserved');
-        return $songs;
-    }
-    
-    /**
-     * 
-     */
-    public function getAllRemovedSongs()
-    {
-        $em                 = $this->em;
-        $songsRepository    = $em->getRepository('Application\Entity\Songs');
-        $songs              = $songsRepository->getAllSuggestedSongs('Removed');
+        $songs              = $songsRepository->getSongsByStatus($status);
         return $songs;
     }
 }

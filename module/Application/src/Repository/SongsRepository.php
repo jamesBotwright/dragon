@@ -13,7 +13,7 @@ class SongsRepository extends EntityRepository
      * @param string $status
      * @return []
      **/
-    public function getAllSuggestedSongs($status)
+    public function getSongsByStatus($status)
     {
         try{
             $sql =

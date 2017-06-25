@@ -56,11 +56,13 @@ class IndexController extends AbstractActionController
     public function songsAction()
     {
         $songsModel         = $this->songsModel;
-        $suggestedSongs     = $songsModel->getAllSuggestedSongs();
-        $setListSongs       = $songsModel->getAllSetListSongs();
-        $reserveSongs       = $songsModel->getAllReserveSongs();
-        $removedSongs       = $songsModel->getAllRemovedSongs();
+        $addSongForm        = $songsModel->getAddSongForm();
+        $suggestedSongs     = $songsModel->getAllSuggestedSongs('Suggested');
+        $setListSongs       = $songsModel->getAllSetListSongs('Set List');
+        $reserveSongs       = $songsModel->getAllReserveSongs('Reserved');
+        $removedSongs       = $songsModel->getAllRemovedSongs('Removed');
         return [
+            'addSongForm'       => $addSongForm,
             'suggestedSongs'    => $suggestedSongs,
             'setListSongs'      => $setListSongs,
             'reserveSongs'      => $reserveSongs,
