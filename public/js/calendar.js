@@ -22,8 +22,8 @@ function onLoadFunction() {
         selectable: true,
         height:     550,
         dayClick:   function(date) {
-            //$('#start').val(date.format());
-            //$('#end').val(date.format());
+            $('#start').val(date.format());
+            $('#end').val(date.format());
             $('#add-event-modal').modal({backdrop: 'static', keyboard: false});
         },
         events: '/application/getEvents',
