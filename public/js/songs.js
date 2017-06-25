@@ -52,7 +52,7 @@ function submitAddSongForm() {
 	return $.ajax({
 		url: '/application/addSong',
 		type: "POST",
-		data: $('#add-song-form').serialize(),,
+		data: $('#add-song-form').serialize(),
 		success: function(data, textStatus, jXHR) {
             $("#suggested-songs-table").html(data);
 		},
