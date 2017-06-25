@@ -19,3 +19,12 @@ $(document).ready(onLoadFunction)
 .on('ajaxStop', function(){
     $('.se-pre-con').fadeOut('slow');
 });
+
+/**
+ * Initialisation
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 25 Jun 2017
+ */
+function onLoadFunction() {  
+    
+}
