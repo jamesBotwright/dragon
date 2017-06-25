@@ -21,7 +21,7 @@ class EventsRepository extends EntityRepository
                 FROM Events AS events
                 WHERE start >= CURDATE()                
                 ORDER BY events.start ASC
-                LIMIT '" . $numberOfEvents . "'
+                LIMIT " . $numberOfEvents . "
             ";
             $stmt = $this->_em->getConnection()->prepare($sql);
             $stmt->execute();
