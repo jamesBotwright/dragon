@@ -21,7 +21,8 @@ function onLoadFunction() {
         editable:   true,
         selectable: true,
         height:     550,
-        dayClick:   function() {
+        dayClick:   function(date) {
+            $('#start').val(date);
             $('#add-event-modal').modal({backdrop: 'static', keyboard: false});
         },
         events: '/application/getEvents',
