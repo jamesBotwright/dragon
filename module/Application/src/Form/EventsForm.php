@@ -91,7 +91,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
                 'step'  => 'any',
             ],
             'options' => [
-                'format'    => 'Y-m-d H:i',
+                'format'    => 'Y-m-d\TH:i',
                 'label'     => 'Start Date',
             ],
         ]);
@@ -105,7 +105,7 @@ class EventsForm extends Form implements InputFilterProviderInterface
                 'step'  => 'any',
             ],
             'options' => [
-                'format'    => 'Y-m-d H:i',
+                'format'    => 'Y-m-d\TH:i',
                 'label'     => 'Start Date',
             ],
         ]);
