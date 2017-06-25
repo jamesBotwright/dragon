@@ -1,5 +1,6 @@
 <?php
     $form = $this->addSongForm;
+    $form->setAttribute('action', $this->url('application', ['action' => 'addSong']));
     $form->setAttribute('name', 'add-song-form');
     $form->setAttribute('id', 'add-song-form');
     $form->prepare();
