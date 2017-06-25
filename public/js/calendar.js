@@ -41,6 +41,7 @@ function onLoadFunction() {
 
             // change the border color just for fun
             $(this).css('border-color', 'red');
+            return false;
         }
     });
     $(".se-pre-con").fadeOut("slow");
