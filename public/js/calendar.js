@@ -40,7 +40,7 @@ function onLoadFunction() {
             alert("Event: " + calEvent.title + "\n\n"
                 + "Description: " + calEvent.description + "\n\n"
                 + "Location: " + calEvent.location + "\n\n"
-                + "Start: " + calEvent.start + "\n\n"
+                + "Start: " + new Date(calEvent.start) + "\n\n"
                 + "End: " + calEvent.end + "\n\n"
             );
             
