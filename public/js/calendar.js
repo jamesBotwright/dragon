@@ -64,6 +64,24 @@ function addEvent() {
 }
 
 /**
+ * Edit event
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 25 Jun 2017
+ */
+function editEvent() {
+    
+}
+
+/**
+ * Delete event
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 25 Jun 2017
+ */
+function deleteEvent() {
+    
+}
+
+/**
  * POST form data 
  * @author James Botwright<james.botwright@glazingvision.co.uk>
  * @version v1.0 18 Jun 2017
