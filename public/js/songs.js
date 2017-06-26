@@ -63,3 +63,11 @@ function submitAddSongForm() {
 		}
 	});
 }
+
+/**
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 26 Jun 2017
+ */
+function deleteSong() {
+    alert('Not implemented yet');
+}
