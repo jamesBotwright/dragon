@@ -39,7 +39,7 @@ function onLoadFunction() {
             };
         },
         eventClick: function(calEvent, jsEvent, view) {
-            $('#event-id').data({"id":calEvent.id});
+            $('#event-id').data('id', calEvent.id);
             $('#event-title').html(calEvent.title);
             $('#event-description').html(calEvent.description);
             $('#event-location').html(calEvent.location);
@@ -70,7 +70,7 @@ function addEvent() {
  * @param int $eventId
  */
 function editEvent() {
-    var eventId = $('#event-id').data();
+    var eventId = $('#event-id').data('id');
     getEventData(eventId)
         .done(function() {
             $('#edit-event-modal').modal({backdrop: 'static', keyboard: false});
