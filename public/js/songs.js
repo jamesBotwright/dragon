@@ -70,10 +70,13 @@ function submitAddSongForm() {
  * @param int songId
  */
 function deleteSong(songId) {
-    removeSong(songId)
-        .done(function() {
-            updateTables();
-        });
+    var result = confirm("Are you sure you want to move this song to removed list?");
+    if (result) {
+        removeSong(songId)
+            .done(function() {
+                updateTables();
+            });
+    }
 }
 
 /**
