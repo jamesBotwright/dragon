@@ -28,9 +28,10 @@ return [
             'application' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/application[/:action]',
+                    'route'    => '/application[/:action][/:id]',
                     'constraints'   => [
                         'action'    => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'        => '[0-9]*',
                     ],
                     'defaults' => [
                         'controller' => Controller\IndexController::class,

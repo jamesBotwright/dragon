@@ -153,6 +153,7 @@ class IndexController extends AbstractActionController
             ->setTerminal(true);
         return $viewModel;
     }
+    
     /**
      * 
      */
