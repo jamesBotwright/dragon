@@ -109,6 +109,20 @@ class EventsForm extends Form implements InputFilterProviderInterface
                 'label'     => 'Start Date',
             ],
         ]);
+        
+        $this->add([
+            'name'          => 'recordActive',
+            'type'          => 'Zend\Form\Element\Checkbox',
+            'attributes'    => [
+                'class' => 'form-control input-sm',
+            ],
+            'options' => [
+                'use_hidden_element'    => true,
+                'checked_value'         => '1',
+                'unchecked_value'       => '0',
+                'label'                 => 'Record Active',
+            ],
+        ]);
     }
     
     public  function getInputFilterSpecification()
@@ -136,6 +150,9 @@ class EventsForm extends Form implements InputFilterProviderInterface
                 'required' => true,
             ],
             'end' => [
+                'required' => true,
+            ],
+            'recordActive' => [
                 'required' => true,
             ],
         ];
