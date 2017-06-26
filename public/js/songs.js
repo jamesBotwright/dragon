@@ -69,7 +69,27 @@ function submitAddSongForm() {
  * @version v1.0 26 Jun 2017
  */
 function deleteSong(songId) {
-    removeSong(songId);
+    removeSong(songId)
+        .done(function() {
+            updateTables();
+        });
+}
+
+/**
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 26 Jun 2017
+ */
+function updateTables() {
+    return $.ajax({
+		url: '/application/songs',
+		type: "GET",
+		success: function(data, textStatus, jXHR) {
+            $("#song-tables").html(data);
+		},
+		error: function(jXHR, textStatus, errorThrown) {
+			
+		}
+	});
 }
 
 /**

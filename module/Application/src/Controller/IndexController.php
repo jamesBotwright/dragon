@@ -114,7 +114,6 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('unauthorised');
         }
         $songsModel      = $this->songsModel;
-        $request         = $this->getRequest();
         $songsModel->setSongStatus($songId, 'Removed');
         return new JsonModel();
     }

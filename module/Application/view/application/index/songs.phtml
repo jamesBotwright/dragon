@@ -2,38 +2,30 @@
 <div class="overlay">
 	<div id="loading-img"></div>
 </div>
-
-<h2>Song Management</h2>
-
-<div class="row">
-    <div class="col-md-12">
-        <div id="suggested-songs-table">
+<div id="song-tables">
+    <h2>Song Management</h2>
+    <div class="row">
+        <div class="col-md-12">
             <?php echo $this->partial('application/index/partial/suggested-songs-table.phtml', [
                 'suggestedSongs' => $this->suggestedSongs, 
                 'addSongForm'    => $this->addSongForm,
             ]); ?>
         </div>
-    </div>
-    <div class="col-md-12">
-        <?php echo $this->partial('application/index/partial/practicing-songs-table.phtml', [
-            'practicingSongs' => $this->practicingSongs, 
-        ]); ?>
-    </div>
-    <div class="col-md-12">
-        <?php echo $this->partial('application/index/partial/set-list-songs-table.phtml', [
-            'setListSongs' => $this->setListSongs, 
-        ]); ?>
-    </div>
-    <div class="col-md-12">
-        <?php echo $this->partial('application/index/partial/removed-songs-table.phtml', [
-            'removedSongs' => $this->removedSongs, 
-        ]); ?>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-10">
-        <div id="current-songs"></div>
+        <div class="col-md-12">
+            <?php echo $this->partial('application/index/partial/practicing-songs-table.phtml', [
+                'practicingSongs' => $this->practicingSongs, 
+            ]); ?>
+        </div>
+        <div class="col-md-12">
+            <?php echo $this->partial('application/index/partial/set-list-songs-table.phtml', [
+                'setListSongs' => $this->setListSongs, 
+            ]); ?>
+        </div>
+        <div class="col-md-12">
+            <?php echo $this->partial('application/index/partial/removed-songs-table.phtml', [
+                'removedSongs' => $this->removedSongs, 
+            ]); ?>
+        </div>
     </div>
 </div>
 
