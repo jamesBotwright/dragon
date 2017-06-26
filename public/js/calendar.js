@@ -71,6 +71,7 @@ function addEvent() {
  */
 function editEvent() {
     var eventId = $('#event-id').data('id');
+    $('#event-details-modal').modal('hide');
     getEventData(eventId)
         .done(function() {
             $('#edit-event-modal').modal({backdrop: 'static', keyboard: false});
