@@ -1,7 +1,7 @@
-<div id="suggest-songs">
+<div id="practicing-songs">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h4 class="panel-title">Reserved Songs</h4>
+            <h4 class="panel-title">Practicing Songs</h4>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -22,14 +22,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if(is_array($this->reservedSongs)): ?>
-                                <?php foreach($this->reservedSongs as $reservedSong): ?>
+                            <?php if(is_array($this->practicingSongs)): ?>
+                                <?php foreach($this->practicingSongs as $practicingSong): ?>
                                 <tr>
                                     <td width="60%">
-                                    	<?php echo $this->escapeHtml($reservedSong['Song_Name']); ?>
+                                    	<?php echo $this->escapeHtml($practicingSong['Song_Name']); ?>
                                 	</td>
                                     <td width="40%">
-                                    	<?php echo $this->escapeHtml($reservedSong['Song_Artist']); ?>
+                                    	<?php echo $this->escapeHtml($practicingSong['Song_Artist']); ?>
                                 	</td>
                                 </tr>
                                 <?php endforeach; ?>

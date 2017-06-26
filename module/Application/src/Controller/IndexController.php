@@ -63,13 +63,13 @@ class IndexController extends AbstractActionController
         $addSongForm        = $songsModel->getAddSongForm();
         $suggestedSongs     = $songsModel->getSongsByStatus('Suggested');
         $setListSongs       = $songsModel->getSongsByStatus('Set List');
-        $reserveSongs       = $songsModel->getSongsByStatus('Reserved');
+        $practicingSongs    = $songsModel->getSongsByStatus('Practicing');
         $removedSongs       = $songsModel->getSongsByStatus('Removed');
         return [
             'addSongForm'       => $addSongForm,
             'suggestedSongs'    => $suggestedSongs,
             'setListSongs'      => $setListSongs,
-            'reserveSongs'      => $reserveSongs,
+            'practicingSongs'   => $practicingSongs,
             'removedSongs'      => $removedSongs,
         ];
     }
