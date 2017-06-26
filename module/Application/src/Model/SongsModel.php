@@ -77,10 +77,22 @@ class SongsModel
     /**
      * 
      */
-    public function removeSong($songId)
+    public function getSongStatusByStatus($status)
+    {
+        $em                     = $this->em;
+        $songStatusRepository   = $em->getRepository('Application\Entity\SongStatus');
+        $status                 = $songStatusRepository->getSongStatusByStatus($status);
+        return $status;
+    }
+
+    /**
+     * 
+     */
+    public function setSongStatus($songId, $statusRequired = 'Removed')
     {
         $song   = $this->getSongById($songId);
-        $song->setSongStatus(4);
+        $status = $this->getSongStatusByStatus($statusRequired);
+        $song->setSongStatus($status);
         $this->flushEM();
     }
     
