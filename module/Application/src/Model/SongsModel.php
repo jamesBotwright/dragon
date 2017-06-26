@@ -66,11 +66,38 @@ class SongsModel
     /**
      * 
      */
+    public function getSongById($songId)
+    {
+        $em                 = $this->em;
+        $songsRepository    = $em->getRepository('Application\Entity\Songs');
+        $song               = $songsRepository->getSongById($songId);
+        return $song;
+    }
+    
+    /**
+     * 
+     */
+    public function removeSong($songId)
+    {
+        $song   = $this->getSongById($songId);
+        $song->setSongStatus(4);
+        $this->flushEM();
+    }
+    
+    /**
+     * 
+     */
     public function persistFlush()
     {
        $songsEntity    = $this->songsEntity;
        $em             = $this->em;
        $em->persist($songsEntity);
-       $em->flush();
+       $this->flushEM();
+    }
+    
+    public function flushEM()
+    {
+        $em = $this->em;
+        $em->flush();
     }
 }

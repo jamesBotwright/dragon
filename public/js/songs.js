@@ -68,6 +68,23 @@ function submitAddSongForm() {
  * @author James Botwright<james.botwright@glazingvision.co.uk>
  * @version v1.0 26 Jun 2017
  */
-function deleteSong() {
-    alert('Not implemented yet');
+function deleteSong(songId) {
+    removeSong(songId);
+}
+
+/**
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 26 Jun 2017
+ */
+function removeSong(songId) {
+	return $.ajax({
+		url: '/application/removeSong/' + songId,
+		type: "GET",
+		success: function(data, textStatus, jXHR) {
+            
+		},
+		error: function(jXHR, textStatus, errorThrown) {
+			
+		}
+	});
 }

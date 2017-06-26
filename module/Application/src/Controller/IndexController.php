@@ -107,6 +107,25 @@ class IndexController extends AbstractActionController
     /**
      * 
      */
+    public function removeSongAction()
+    {
+        $songId = $this->params()->fromRoute('id', 0);
+        if($songId === 0) {
+            return $this->redirect()->toRoute('unauthorised');
+        }
+        $songsModel      = $this->songsModel;
+        $request         = $this->getRequest();
+        if($request->IsPost()) {
+            $songsModel->removeSong($songId);
+        }
+        
+        return new JsonModel();
+    }
+    
+    
+    /**
+     * 
+     */
     public function calendarAction()
     {
         $calendarModel   = $this->calendarModel;
