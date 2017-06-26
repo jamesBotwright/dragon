@@ -73,6 +73,17 @@ class CalendarModel
     /**
      * 
      */
+    public function getEventById($eventId)
+    {
+        $em         = $this->em;
+        $eventsRepo = $em->getRepository('Application\Entity\Events');
+        $event      = $eventsRepo->getEventById($eventId);
+        return $event;
+    }
+    
+    /**
+     * 
+     */
     public function getEvents($startDate, $endDate)
     {
         $em         = $this->em;
