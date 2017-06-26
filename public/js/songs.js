@@ -67,6 +67,7 @@ function submitAddSongForm() {
 /**
  * @author James Botwright<james.botwright@glazingvision.co.uk>
  * @version v1.0 26 Jun 2017
+ * @param int songId
  */
 function deleteSong(songId) {
     removeSong(songId)
