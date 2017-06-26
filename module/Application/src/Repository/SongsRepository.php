@@ -6,7 +6,31 @@ use Doctrine\ORM\EntityRepository;
 
 class SongsRepository extends EntityRepository
 {
-   /**
+    /**
+     * @author James Botwright <james.botwright@glazingvision.co.uk>
+     * @version v1.0 - 24.06.17
+     * @throws Exception
+     * @param int $songId
+     * @return array
+     **/
+    public function getSongById($songId)
+    {
+        try{
+            $qb = $this->_em->createQueryBuilder();
+            $qb->select('songs')
+                ->from('Application\Entity\Songs', 'songs')
+                ->andWhere('songs.songsId = ?1')
+                ->setParameter(1, $songId);
+            $query = $qb->getQuery();
+            $result = $query->getSingleResult();
+        } catch (\Exception $e){
+            echo '  Caught exception: ' . $e->getMessage() . ' - ' . __METHOD__
+            . ' -  songId = ' . $songId;
+        }
+        return $result;
+    }
+    
+    /**
      * @author James Botwright <james.botwright@glazingvision.co.uk>
      * @version v1.0 - 25.06.17
      * @throws Exception
