@@ -50,11 +50,23 @@ class CalendarModel
     /**
      * 
      */
-    public function getEventsForm()
+    public function getAddEventsForm()
     {
         $eventsEntity   = $this->eventsEntity;
         $eventsForm     = $this->eventsForm;
         $eventsForm->bind($eventsEntity);
+        return $eventsForm;
+    }
+    
+    /**
+     * 
+     * @param int $eventId
+     */
+    public function getEditEventsForm($eventId)
+    {
+        $event          = $this->getEventById($eventId);
+        $eventsForm     = $this->eventsForm;
+        $eventsForm->bind($event);
         return $eventsForm;
     }
     

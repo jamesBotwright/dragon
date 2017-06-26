@@ -10,7 +10,11 @@
 </div>
 
 <div class="modal fade" id="add-event-modal">
-    <?php echo $this->partial('application/index/partial/add-event-modal.phtml', ['eventsForm' => $this->eventsForm]); ?>
+    <?php echo $this->partial('application/index/partial/add-event-modal.phtml', ['addEventsForm' => $this->addEventsForm]); ?>
+</div>
+
+<div class="modal fade" id="edit-event-modal">
+    <?php echo $this->partial('application/index/partial/add-event-modal.phtml', ['editEventsForm' => $this->editEventsForm]); ?>
 </div>
 
 <div class="modal fade" id="event-details-modal">

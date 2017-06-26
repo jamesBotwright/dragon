@@ -110,9 +110,11 @@ class IndexController extends AbstractActionController
     public function calendarAction()
     {
         $calendarModel   = $this->calendarModel;
-        $eventsForm      = $calendarModel->getEventsForm();
+        $addEventsForm   = $calendarModel->getAddEventsForm();
+        $editEventsForm  = $calendarModel->getEditEventsForm();
         return [
-            'eventsForm'   => $eventsForm,
+            'addEventsForm'   => $addEventsForm,
+            'editEventsForm'  => $editEventsForm,
         ];
     }
     
@@ -132,12 +134,12 @@ class IndexController extends AbstractActionController
     public function addEventAction()
     {
         $calendarModel   = $this->calendarModel;
-        $eventsForm      = $calendarModel->getEventsForm();
+        $addEventsForm   = $calendarModel->getAddEventsForm();
         $request         = $this->getRequest();
         if($request->IsPost()) {
-            $eventsForm->setData($request->getPost());
-            $eventsForm->setInputFilter($eventsForm->getInputFilter());
-            if($eventsForm->isValid()) {
+            $addEventsForm->setData($request->getPost());
+            $addEventsForm->setInputFilter($addEventsForm->getInputFilter());
+            if($addEventsForm->isValid()) {
                 $calendarModel->persistFlush();
             } else {
                 $this->getResponse()->setStatusCode(401);
@@ -145,9 +147,38 @@ class IndexController extends AbstractActionController
         }
         $viewModel = new ViewModel();
         $viewModel->setVariables([
-                'eventsForm'   => $eventsForm,
+                'addEventsForm'   => $addEventsForm,
             ])
             ->setTemplate('application/index/partial/add-event-modal.phtml')
+            ->setTerminal(true);
+        return $viewModel;
+    }
+    /**
+     * 
+     */
+    public function editEventAction()
+    {
+        $eventId = $this->params()->fromRoute('id', 0);
+        if($eventId === 0) {
+            return $this->redirect()->toRoute('unauthorised');
+        }
+        $calendarModel   = $this->calendarModel;
+        $editEventsForm  = $calendarModel->getEditEventsForm($eventId);
+        $request         = $this->getRequest();
+        if($request->IsPost()) {
+            $editEventsForm->setData($request->getPost());
+            $editEventsForm->setInputFilter($editEventsForm->getInputFilter());
+            if($editEventsForm->isValid()) {
+                $calendarModel->persistFlush();
+            } else {
+                $this->getResponse()->setStatusCode(401);
+            }
+        }
+        $viewModel = new ViewModel();
+        $viewModel->setVariables([
+                'editEventsForm'   => $editEventsForm,
+            ])
+            ->setTemplate('application/index/partial/edit-event-modal.phtml')
             ->setTerminal(true);
         return $viewModel;
     }

@@ -39,11 +39,12 @@ function onLoadFunction() {
             };
         },
         eventClick: function(calEvent, jsEvent, view) {
+            $('#event-id').data(calEvent.id);
             $('#event-title').html(calEvent.title);
             $('#event-description').html(calEvent.description);
             $('#event-location').html(calEvent.location);
-            $('#event-title').html(calEvent.start);
-            $('#event-title').html(calEvent.end);
+            $('#event-start').html(calEvent.start);
+            $('#event-end').html(calEvent.end);
             $('#event-details-modal').modal({backdrop: 'static', keyboard: false});
             return false;
         }
@@ -64,12 +65,29 @@ function addEvent() {
 }
 
 /**
- * Edit event
  * @author James Botwright<james.botwright@glazingvision.co.uk>
  * @version v1.0 25 Jun 2017
+ * @param int $eventId
  */
 function editEvent() {
-    alert('Sorry not implemented yet!');
+    var eventId = $('#event-id').data();
+    getEventData(eventId)
+        .done(function() {
+            $('#edit-event-modal').modal({backdrop: 'static', keyboard: false});
+        });
+    
+}
+
+/**
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 25 Jun 2017
+ * @param int $eventId
+ */
+function updateEvent(eventId) {
+    postEditEventData(eventId)
+        .done(function() {
+            $('#edit-event-modal').modal('hide');
+        });
 }
 
 /**
@@ -90,7 +108,7 @@ function postAddEventData() {
     return $.ajax({
 		url: '/application/addEvent',
 		type: "POST",
-		data: $('#eventsForm').serialize(),
+		data: $('#addEventsForm').serialize(),
 		success: function(data, textStatus, jXHR) {
 			$('#calendar').fullCalendar('refetchEvents');
 		},
@@ -103,11 +121,62 @@ function postAddEventData() {
 }
 
 /**
+ * POST form data 
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 18 Jun 2017
+ * @param int eventId
+ */
+function postEditEventData(eventId) {
+    return $.ajax({
+		url: '/application/editEvent' + eventId,
+		type: "POST",
+		data: $('#editEventsForm').serialize(),
+		success: function(data, textStatus, jXHR) {
+			$('#calendar').fullCalendar('refetchEvents');
+		},
+		error: function(jXHR, textStatus, errorThrown) {
+			if (jXHR.status == 401) {
+				$("#edit-event-modal").html(jXHR.responseText);
+			}
+		}
+	});
+}
+
+/**
+ * GET event data 
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 26 Jun 2017
+ * @param int eventId
+ */
+function getEventData(eventId) {
+    return $.ajax({
+		url: '/application/editEvent' + eventId,
+		type: "GET",
+		success: function(data, textStatus, jXHR) {
+			$("#edit-event-modal").html(data);
+		},
+		error: function(jXHR, textStatus, errorThrown) {
+            alert('Uh-oh something appears to have gone wrong...');
+		}
+	});
+}
+
+/**
  * Prevent default form action and submit with JS
  * @author James Botwright<james.botwright@glazingvision.co.uk>
  * @version v1.0 18 Jun 2017
  */
-$('#eventsForm').on('submit',function(e) {
+$('#addEventsForm').on('submit',function(e) {
 	e.preventDefault();
     postAddEventData();
+});
+
+/**
+ * Prevent default form action and submit with JS
+ * @author James Botwright<james.botwright@glazingvision.co.uk>
+ * @version v1.0 18 Jun 2017
+ */
+$('#editEventsForm').on('submit',function(e) {
+	e.preventDefault();
+    postEditEventData();
 });
