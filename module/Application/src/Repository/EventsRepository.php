@@ -44,6 +44,7 @@ class EventsRepository extends EntityRepository
             "SELECT *
                 FROM Events AS events
                 WHERE start >= CURDATE()                
+                AND Record_Active = 1
                 ORDER BY events.start ASC
                 LIMIT " . $numberOfEvents . "
             ";
@@ -71,6 +72,7 @@ class EventsRepository extends EntityRepository
                 FROM Events AS events
                     WHERE events.start >= :start
                     AND events.end < :end
+                    AND Record_Active = 1
                 ORDER BY events.start ASC
             ";
             $stmt = $this->_em->getConnection()->prepare($sql);

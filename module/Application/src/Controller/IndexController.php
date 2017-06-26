@@ -183,4 +183,21 @@ class IndexController extends AbstractActionController
             ->setTerminal(true);
         return $viewModel;
     }
+    
+    /**
+     * 
+     */
+    public function removeEventAction()
+    {
+        $eventId = $this->params()->fromRoute('id', 0);
+        if($eventId === 0) {
+            return $this->redirect()->toRoute('unauthorised');
+        }
+        $request = $this->getRequest();
+        if($request->IsPost()) {
+            $calendarModel = $this->calendarModel;
+            $calendarModel->removeEvent($eventId);
+        }
+        return new JsonModel([]);
+    }
 }

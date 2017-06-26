@@ -95,6 +95,17 @@ class CalendarModel
     /**
      * 
      */
+    public function removeEvent($eventId)
+    {
+        $em         = $this->em;
+        $event      = $this->getEventById($eventId);
+        $event->setRecordActive(false);
+        $em->flush();
+    }
+    
+    /**
+     * 
+     */
     public function persistFlush()
     {
        $eventsEntity    = $this->eventsEntity;

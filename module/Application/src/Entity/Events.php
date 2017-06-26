@@ -70,6 +70,13 @@ class Events
      */
     private $end = null;
     
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="Record_Active", type="boolean", nullable=true)
+     */
+    private $recordActive;
+    
     function getId()
     {
         return $this->id;
@@ -110,6 +117,10 @@ class Events
         return $this->end;
     }
 
+    function getRecordActive() {
+        return $this->recordActive;
+    }
+    
     function setTitle($title)
     {
         $this->title = $title;
@@ -143,5 +154,9 @@ class Events
     function setEnd(\DateTime $end)
     {
         $this->end = $end;
+    }
+    
+    function setRecordActive($recordActive) {
+        $this->recordActive = $recordActive;
     }
 }

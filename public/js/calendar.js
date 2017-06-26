@@ -97,7 +97,31 @@ function updateEvent(eventId) {
  * @version v1.0 25 Jun 2017
  */
 function deleteEvent() {
-    alert('Sorry not implemented yet!');
+    var result = confirm("Are you sure you want to delete this event?");
+    if (result) {
+        var eventId = $('#event-id').data('id');
+        removeEventAction(eventId)
+            .done(function() {
+                $('#event-details-modal').modal('hide');
+                $('#calendar').fullCalendar('refetchEvents');
+            });
+    }
+}
+
+/**
+ * @author James Botwright <jamesb@glazingvision.co.uk>
+ * @version v1.0 26-06-17
+ * @param int eventId
+ */
+function removeEventAction(eventId) {
+	return $.ajax({
+		url: "/application/removeEvent/" + eventId,
+		type: "POST",
+		success: function(data, textStatus, jXHR) {
+		},
+		error: function(jXHR, textStatus, errorThrown) {
+		}
+	});
 }
 
 /**
