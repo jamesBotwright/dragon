@@ -117,6 +117,15 @@ class CalendarModel
        $eventsEntity    = $this->eventsEntity;
        $em              = $this->em;
        $em->persist($eventsEntity);
+       $this->flushEM();
+    }
+    
+    /**
+     * 
+     */
+    public function flushEM()
+    {
+       $em              = $this->em;
        $em->flush();
     }
 }
