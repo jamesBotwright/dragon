@@ -128,7 +128,7 @@ function postAddEventData() {
  */
 function postEditEventData(eventId) {
     return $.ajax({
-		url: '/application/editEvent' + eventId,
+		url: '/application/editEvent/' + eventId,
 		type: "POST",
 		data: $('#editEventsForm').serialize(),
 		success: function(data, textStatus, jXHR) {
@@ -150,7 +150,7 @@ function postEditEventData(eventId) {
  */
 function getEventData(eventId) {
     return $.ajax({
-		url: '/application/editEvent' + eventId,
+		url: '/application/editEvent/' + eventId,
 		type: "GET",
 		success: function(data, textStatus, jXHR) {
 			$("#edit-event-modal").html(data);
