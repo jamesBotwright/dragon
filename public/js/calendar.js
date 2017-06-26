@@ -39,7 +39,7 @@ function onLoadFunction() {
             };
         },
         eventClick: function(calEvent, jsEvent, view) {
-            $('#event-id').data(calEvent.id);
+            $('#event-id').data({"id":calEvent.id});
             $('#event-title').html(calEvent.title);
             $('#event-description').html(calEvent.description);
             $('#event-location').html(calEvent.location);
