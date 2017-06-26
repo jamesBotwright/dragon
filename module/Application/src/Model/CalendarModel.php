@@ -55,7 +55,7 @@ class CalendarModel
         $eventsEntity   = $this->eventsEntity;
         $eventsForm     = $this->eventsForm;
         $eventsForm->bind($eventsEntity);
-        $eventsForm->get('Record_Active')->setValue(true);
+        $eventsForm->get('recordActive')->setValue(true);
         $eventsForm->get('title')->setValue(null);
         $eventsForm->get('description')->setValue(null);
         $eventsForm->get('location')->setValue(null);
