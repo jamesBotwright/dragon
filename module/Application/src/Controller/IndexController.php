@@ -111,7 +111,7 @@ class IndexController extends AbstractActionController
     {
         $calendarModel   = $this->calendarModel;
         $addEventsForm   = $calendarModel->getAddEventsForm();
-        $editEventsForm  = $calendarModel->getEditEventsForm();
+        $editEventsForm  = $calendarModel->getAddEventsForm();
         return [
             'addEventsForm'   => $addEventsForm,
             'editEventsForm'  => $editEventsForm,
