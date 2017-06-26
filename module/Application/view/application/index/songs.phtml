@@ -6,7 +6,7 @@
 <h2>Song Management</h2>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div id="suggested-songs-table">
             <?php echo $this->partial('application/index/partial/suggested-songs-table.phtml', [
                 'suggestedSongs' => $this->suggestedSongs, 
@@ -14,7 +14,7 @@
             ]); ?>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-12">
         <?php echo $this->partial('application/index/partial/practicing-songs-table.phtml', [
             'practicingSongs' => $this->practicingSongs, 
         ]); ?>
@@ -24,7 +24,7 @@
             'setListSongs' => $this->setListSongs, 
         ]); ?>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-12">
         <?php echo $this->partial('application/index/partial/removed-songs-table.phtml', [
             'removedSongs' => $this->removedSongs, 
         ]); ?>
