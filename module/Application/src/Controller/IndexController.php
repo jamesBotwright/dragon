@@ -115,7 +115,7 @@ class IndexController extends AbstractActionController
         }
         $songsModel      = $this->songsModel;
         $request         = $this->getRequest();
-        $songsModel->removeSong($songId, 'Removed');
+        $songsModel->setSongStatus($songId, 'Removed');
         return new JsonModel();
     }
     
