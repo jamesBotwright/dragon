@@ -29,13 +29,13 @@ function onLoadFunction() {
         events: '/application/getEvents',
         eventDataTransform: function (rawEventData) {
             return {
-                id: rawEventData.id,
-                title: rawEventData.title,
-                description: rawEventData.description,
-                location: rawEventData.location,
-                start: rawEventData.start,
-                end: rawEventData.end,
-                url: rawEventData.url
+                id:             rawEventData.id,
+                title:          rawEventData.title,
+                description:    rawEventData.description,
+                location:       rawEventData.location,
+                start:          rawEventData.start,
+                end:            rawEventData.end,
+                url:            rawEventData.url
             };
         },
         eventClick: function(calEvent, jsEvent, view) {
@@ -45,6 +45,7 @@ function onLoadFunction() {
             $('#event-location').html(calEvent.location);
             $('#event-start').html(calEvent.start);
             $('#event-end').html(calEvent.end);
+            alert(calEvent.start);
             $('#event-details-modal').modal({backdrop: 'static', keyboard: false});
             return false;
         }
