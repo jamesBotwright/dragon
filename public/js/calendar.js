@@ -40,11 +40,11 @@ function onLoadFunction() {
         },
         eventClick: function(calEvent, jsEvent, view) {
             $('#event-id').data('id', calEvent.id);
-            $('#event-title').html(calEvent.title);
-            $('#event-description').html(calEvent.description);
-            $('#event-location').html(calEvent.location);
-            $('#event-start').html(calEvent.start);
-            $('#event-end').html(calEvent.end);
+            $('#event-title').text(calEvent.title);
+            $('#event-description').text(calEvent.description);
+            $('#event-location').text(calEvent.location);
+            $('#event-start').text(calEvent.start);
+            $('#event-end').text(calEvent.end);
             alert(calEvent.start);
             $('#event-details-modal').modal({backdrop: 'static', keyboard: false});
             return false;
