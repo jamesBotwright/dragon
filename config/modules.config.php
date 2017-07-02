@@ -19,4 +19,7 @@ return [
     'Zend\Router',
     'Zend\Validator',
     'Application',
+    'ZfcBase',
+    'ZfcUser',
+    'ZfcUserDoctrineORM',
 ];
