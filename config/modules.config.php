@@ -20,6 +20,6 @@ return [
     'Zend\Validator',
     'Application',
 //    'ZfcBase',
-//    'ZfcUser',
-//    'ZfcUserDoctrineORM',
+    'ZfcUser',
+    'ZfcUserDoctrineORM',
 ];
