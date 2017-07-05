@@ -21,6 +21,11 @@ function onLoadFunction() {
         editable:   true,
         selectable: true,
         height:     550,
+        header: {
+            left:   'prev,next today',
+            center: 'title',
+            right:  'month,agendaWeek,agendaDay'
+        },
         dayClick:   function(date) {
             $('#start').val(date.format() + 'T12:00');
             $('#end').val(date.format() + 'T12:00');
