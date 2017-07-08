@@ -1,5 +1,6 @@
 <?php
 namespace User\Service\Factory;
+
 use Interop\Container\ContainerInterface;
 use User\Service\UserManager;
 /**
