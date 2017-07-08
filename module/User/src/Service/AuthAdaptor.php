@@ -4,12 +4,12 @@ namespace User\Service;
 use Zend\Authentication\Adapter\AdapterInterface;
 use Zend\Authentication\Result;
 use Zend\Crypt\Password\Bcrypt;
-use User\Entity\User;
+use Application\Entity\Users;
 
 /**
  * Adapter used for authenticating user. It takes login and password on input
  * and checks the database if there is a user with such login (email) and password.
- * If such user exists, the service returns his identity (email). The identity
+ * If such user exists, the service returns its identity (email). The identity
  * is saved to session and can be retrieved later with Identity view helper provided
  * by ZF3.
  */
@@ -63,7 +63,7 @@ class AuthAdapter implements AdapterInterface
     public function authenticate()
     {                
         // Check the database if there is a user with such email.
-        $user = $this->entityManager->getRepository(User::class)
+        $user = $this->entityManager->getRepository(Users::class)
                 ->findOneByEmail($this->email);
         
         // If there is no such user, return 'Identity Not Found' status.
@@ -76,7 +76,7 @@ class AuthAdapter implements AdapterInterface
         
         // If the user with such email exists, we need to check if it is active or retired.
         // Do not allow retired users to log in.
-        if ($user->getStatus()==User::STATUS_RETIRED) {
+        if ($user->getStatus()==Users::STATUS_RETIRED) {
             return new Result(
                 Result::FAILURE, 
                 null, 
