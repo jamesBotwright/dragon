@@ -4,7 +4,6 @@ namespace User;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 return [
     'router' => [
