@@ -21,7 +21,7 @@ return [
                         'id'        => '[0-9]*',
                     ],
                     'defaults' => [
-                        'controller' => Controller\UserController::class,
+                        'controller' => Controller\AuthController::class,
                         'action'     => 'index',
                     ],
                 ],
