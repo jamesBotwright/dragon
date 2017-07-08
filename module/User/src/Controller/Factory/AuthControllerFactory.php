@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2017 Glazing Vision Ltd. (http://www.glazingvision.co.uk)
  */
 
-namespace Application\Controller\Factory;
+namespace User\Controller\Factory;
 
 class AuthControllerFactory
 {
