@@ -7,6 +7,11 @@
 
 namespace User;
 
+use Zend\Mvc\MvcEvent;
+use Zend\Mvc\Controller\AbstractActionController;
+use User\Controller\AuthController;
+use User\Service\AuthManager;
+
 class Module
 {
     const VERSION = '3.0.1';
