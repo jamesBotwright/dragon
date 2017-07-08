@@ -30,7 +30,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\UserController::class => Controller\Factory\UserControllerFactory::class,
+            Controller\AuthController::class => Controller\Factory\AuthControllerFactory::class,
         ],
     ],
     'service_manager' => [
