@@ -9,6 +9,7 @@ namespace Application;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
@@ -68,10 +69,25 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-                'applicationModel'  => Model\Factory\ApplicationModelFactory::class,
-                'calendarModel'     => Model\Factory\CalendarModelFactory::class,
-                'songsModel'        => Model\Factory\SongsModelFactory::class,
+                Service\NavManager::class       => Service\Factory\NavManagerFactory::class,    
+                Model\ApplicationModel::class   => Model\Factory\ApplicationModelFactory::class,
+                Model\CalendarModel::class      => Model\Factory\CalendarModelFactory::class,
+                Model\SongsModel::class         => Model\Factory\SongsModelFactory::class,
             ],
+            'aliases' => [
+                'mainMenu'          => View\Helper\Menu::class,
+                'pageBreadcrumbs'   => View\Helper\Breadcrumbs::class,
+        ],
+    ],
+    'view_helpers' => [
+        'factories' => [
+            View\Helper\Menu::class         => View\Helper\Factory\MenuFactory::class,
+            View\Helper\Breadcrumbs::class  => InvokableFactory::class,
+        ],
+        'aliases' => [
+            'mainMenu'          => View\Helper\Menu::class,
+            'pageBreadcrumbs'   => View\Helper\Breadcrumbs::class,
+        ],
     ],
     'view_manager' => [
         'display_not_found_reason' => true,
@@ -92,6 +108,14 @@ return [
             'ViewJsonStrategy',
         ],
     ],
+    // The following key allows to define custom styling for FlashMessenger view helper.
+    'view_helper_config' => [
+        'flashmessenger' => [
+            'message_open_format'      => '<div%s><ul><li>',
+            'message_close_string'     => '</li></ul></div>',
+            'message_separator_string' => '</li><li>'
+        ]
+    ], 
     'doctrine' => [
         'driver' => [
             __NAMESPACE__ . '_driver' => [
