@@ -19,9 +19,9 @@ class IndexControllerFactory
      */
     public function __invoke($container)
     {
-        $applicationModel   = $container->get('ApplicationModel');
-        $calendarModel      = $container->get('CalendarModel');
-        $songsModel         = $container->get('SongsModel');
+        $applicationModel   = $container->get(ApplicationModel::class);
+        $calendarModel      = $container->get(CalendarModel::class);
+        $songsModel         = $container->get(SongsModel::class);
         $controller         = new \Application\Controller\IndexController(
             $applicationModel, 
             $calendarModel,
