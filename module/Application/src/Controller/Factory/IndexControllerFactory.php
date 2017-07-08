@@ -8,6 +8,10 @@
 
 namespace Application\Controller\Factory;
 
+use Application\Model\ApplicationModel;
+use Application\Model\CalendarModel;
+use Application\Model\SongsModel;
+
 class IndexControllerFactory
 {
     /**
