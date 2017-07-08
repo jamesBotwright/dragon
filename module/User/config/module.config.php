@@ -22,7 +22,7 @@ return [
                     ],
                     'defaults' => [
                         'controller' => Controller\AuthController::class,
-                        'action'     => 'index',
+                        'action'     => 'login',
                     ],
                 ],
             ],
