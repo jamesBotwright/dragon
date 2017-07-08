@@ -1,116 +1,227 @@
 <?php
-
-namespace Application\Entity;
+namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Users
- *
+ * This class represents a registered user.
+ * @ORM\Entity()
  * @ORM\Table(name="Users")
- * @ORM\Entity(repositoryClass="Application\Repository\UsersRepository")
  */
-class Users
+class Users 
 {
+    // User status constants.
+    const STATUS_ACTIVE       = 1; // Active user.
+    const STATUS_RETIRED      = 2; // Retired user.
+    
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="User_ID", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="id")
+     * @ORM\GeneratedValue
      */
-    private $userId;
+    protected $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Username", type="string", length=45, nullable=true)
+    /** 
+     * @ORM\Column(name="email")  
      */
-    private $username;
+    protected $email;
+    
+    /** 
+     * @ORM\Column(name="full_name")  
+     */
+    protected $fullName;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Password", type="string", length=100, nullable=true)
+    /** 
+     * @ORM\Column(name="password")  
      */
-    private $password;
+    protected $password;
 
-    /**
-     * Get userId
-     *
-     * @return integer 
+    /** 
+     * @ORM\Column(name="status")  
      */
-    public function getUserId()
+    protected $status;
+    
+    /**
+     * @ORM\Column(name="date_created")  
+     */
+    protected $dateCreated;
+        
+    /**
+     * @ORM\Column(name="pwd_reset_token")  
+     */
+    protected $passwordResetToken;
+    
+    /**
+     * @ORM\Column(name="pwd_reset_token_creation_date")  
+     */
+    protected $passwordResetTokenCreationDate;
+    
+    /**
+     * Returns user ID.
+     * @return integer
+     */
+    public function getId() 
     {
-        return $this->userId;
+        return $this->id;
     }
 
     /**
-     * Set username
-     *
-     * @param string $username
-     * @return Users
+     * Sets user ID. 
+     * @param int $id    
      */
-    public function setUsername($username)
+    public function setId($id) 
     {
-        $this->username = $username;
-
-        return $this;
+        $this->id = $id;
     }
 
     /**
-     * Get username
-     *
-     * @return string 
+     * Returns email.     
+     * @return string
      */
-    public function getUsername()
+    public function getEmail() 
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
-     * Set password
-     *
+     * Sets email.     
+     * @param string $email
+     */
+    public function setEmail($email) 
+    {
+        $this->email = $email;
+    }
+    
+    /**
+     * Returns full name.
+     * @return string     
+     */
+    public function getFullName() 
+    {
+        return $this->fullName;
+    }       
+
+    /**
+     * Sets full name.
+     * @param string $fullName
+     */
+    public function setFullName($fullName) 
+    {
+        $this->fullName = $fullName;
+    }
+    
+    /**
+     * Returns status.
+     * @return int     
+     */
+    public function getStatus() 
+    {
+        return $this->status;
+    }
+
+    /**
+     * Returns possible statuses as array.
+     * @return array
+     */
+    public static function getStatusList() 
+    {
+        return [
+            self::STATUS_ACTIVE => 'Active',
+            self::STATUS_RETIRED => 'Retired'
+        ];
+    }    
+    
+    /**
+     * Returns user status as string.
+     * @return string
+     */
+    public function getStatusAsString()
+    {
+        $list = self::getStatusList();
+        if(isset($list[$this->status])) {
+            return $list[$this->status];
+        }
+        return 'Unknown';
+    }    
+    
+    /**
+     * Sets status.
+     * @param int $status     
+     */
+    public function setStatus($status) 
+    {
+        $this->status = $status;
+    }   
+    
+    /**
+     * Returns password.
+     * @return string
+     */
+    public function getPassword() 
+    {
+       return $this->password; 
+    }
+    
+    /**
+     * Sets password.     
      * @param string $password
-     * @return Users
      */
-    public function setPassword($password)
+    public function setPassword($password) 
     {
         $this->password = $password;
-
-        return $this;
     }
-
+    
     /**
-     * Get password
-     *
-     * @return string 
+     * Returns the date of user creation.
+     * @return string     
      */
-    public function getPassword()
+    public function getDateCreated() 
     {
-        return $this->password;
+        return $this->dateCreated;
     }
-
+    
     /**
-     * Set recordActive
-     *
-     * @param integer $recordActive
-     * @return Records
+     * Sets the date when this user was created.
+     * @param string $dateCreated     
      */
-    public function setRecordActive($recordActive)
+    public function setDateCreated($dateCreated) 
     {
-        $this->recordActive = $recordActive;
-
-        return $this;
+        $this->dateCreated = $dateCreated;
+    }    
+    
+    /**
+     * Returns password reset token.
+     * @return string
+     */
+    public function getResetPasswordToken()
+    {
+        return $this->passwordResetToken;
     }
-
+    
     /**
-     * Get recordActive
-     *
-     * @return integer 
+     * Sets password reset token.
+     * @param string $token
      */
-    public function getRecordActive()
+    public function setPasswordResetToken($token) 
     {
-        return $this->recordActive;
+        $this->passwordResetToken = $token;
+    }
+    
+    /**
+     * Returns password reset token's creation date.
+     * @return string
+     */
+    public function getPasswordResetTokenCreationDate()
+    {
+        return $this->passwordResetTokenCreationDate;
+    }
+    
+    /**
+     * Sets password reset token's creation date.
+     * @param string $date
+     */
+    public function setPasswordResetTokenCreationDate($date) 
+    {
+        $this->passwordResetTokenCreationDate = $date;
     }
 }

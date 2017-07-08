@@ -1,28 +1,23 @@
 <?php
-/**
- * AuthControllerFactory
- * Configure and return instance of UserController
- * @author James Botwright <jamesb@glazingvision.co.uk>
- * @copyright Copyright (c) 2017 Glazing Vision Ltd. (http://www.glazingvision.co.uk)
- */
-
 namespace User\Controller\Factory;
-
-class AuthControllerFactory
+use Interop\Container\ContainerInterface;
+use User\Controller\AuthController;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use User\Service\AuthManager;
+use User\Service\UserManager;
+/**
+ * This is the factory for AuthController. Its purpose is to instantiate the controller
+ * and inject dependencies into its constructor.
+ */
+class AuthControllerFactory implements FactoryInterface
 {
-    /**
-     * @author James Botwright <jamesb@glazingvision.co.uk>
-     * @version 09.04.17
-     * 
-     * @param $container
-     * @return \User\Controller\AuthController
-     */
-    public function __invoke($container)
-    {
-        $em                 = $container->get('doctrine.entitymanager.orm_default');
-        $controller         = new \User\Controller\AuthController(
-            $em
-        );
-        return $controller;
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {   
+        $entityManager = $container->get('doctrine.entitymanager.orm_default');
+        $authManager = $container->get(AuthManager::class);
+        $authService = $container->get(\Zend\Authentication\AuthenticationService::class);
+        $userManager = $container->get(UserManager::class);
+        
+        return new AuthController($entityManager, $authManager, $authService, $userManager);
     }
 }
