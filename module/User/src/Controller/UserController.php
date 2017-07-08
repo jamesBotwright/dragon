@@ -2,7 +2,7 @@
 namespace User\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use User\Entity\User;
+use Application\Entity\Users;
 use User\Form\UserForm;
 use User\Form\PasswordChangeForm;
 use User\Form\PasswordResetForm;
@@ -39,7 +39,7 @@ class UserController extends AbstractActionController
      */
     public function indexAction() 
     {
-        $users = $this->entityManager->getRepository(User::class)
+        $users = $this->entityManager->getRepository(Users::class)
                 ->findBy([], ['id'=>'ASC']);
         
         return new ViewModel([
@@ -95,7 +95,7 @@ class UserController extends AbstractActionController
         }
         
         // Find a user with such ID.
-        $user = $this->entityManager->getRepository(User::class)
+        $user = $this->entityManager->getRepository(Users::class)
                 ->find($id);
         
         if ($user == null) {
@@ -119,7 +119,7 @@ class UserController extends AbstractActionController
             return;
         }
         
-        $user = $this->entityManager->getRepository(User::class)
+        $user = $this->entityManager->getRepository(Users::class)
                 ->find($id);
         
         if ($user == null) {
@@ -176,7 +176,7 @@ class UserController extends AbstractActionController
             return;
         }
         
-        $user = $this->entityManager->getRepository(User::class)
+        $user = $this->entityManager->getRepository(Users::class)
                 ->find($id);
         
         if ($user == null) {
@@ -242,7 +242,7 @@ class UserController extends AbstractActionController
             if($form->isValid()) {
                 
                 // Look for the user with such email.
-                $user = $this->entityManager->getRepository(User::class)
+                $user = $this->entityManager->getRepository(Users::class)
                         ->findOneByEmail($data['email']);                
                 if ($user!=null) {
                     // Generate a new password for user and send an E-mail 

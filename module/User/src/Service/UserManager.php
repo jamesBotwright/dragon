@@ -83,7 +83,7 @@ class UserManager
     {
         $user = $this->entityManager->getRepository(Users::class)->findOneBy([]);
         if ($user==null) {
-            $user = new User();
+            $user = new Users();
             $user->setEmail('admin@example.com');
             $user->setFullName('Admin');
             $bcrypt = new Bcrypt();

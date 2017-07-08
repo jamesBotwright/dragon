@@ -25,7 +25,7 @@ class UserForm extends Form
     
     /**
      * Current user.
-     * @var User\Entity\User 
+     * @var Application\Entity\Users 
      */
     private $user = null;
     
