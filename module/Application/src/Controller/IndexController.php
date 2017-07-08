@@ -51,7 +51,7 @@ class IndexController extends AbstractActionController
         $upcomingEvents  = $calendarModel->getUpcomingEvents(3);
         return [
             'upcomingEvents' => $upcomingEvents,
-        ];
+        ]; 
     }
     
     /**
