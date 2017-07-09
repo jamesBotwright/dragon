@@ -23,8 +23,8 @@ class NavManager
      */
     public function __construct($authService, $urlHelper) 
     {
-        $this->authService = $authService;
-        $this->urlHelper = $urlHelper;
+        $this->authService  = $authService;
+        $this->urlHelper    = $urlHelper;
     }
     
     /**
@@ -32,17 +32,17 @@ class NavManager
      */
     public function getMenuItems() 
     {
-        $url = $this->urlHelper;
-        $items = [];
+        $url    = $this->urlHelper;
+        $items  = [];
         
         $items[] = [
-            'id' => 'home',
+            'id'    => 'home',
             'label' => 'Home',
             'link'  => $url('home')
         ];
         
         $items[] = [
-            'id' => 'about',
+            'id'    => 'about',
             'label' => 'About',
             'link'  => $url('about')
         ];
@@ -51,7 +51,7 @@ class NavManager
         // display "Admin" and "Logout" menu items only for authorized users.
         if (!$this->authService->hasIdentity()) {
             $items[] = [
-                'id' => 'login',
+                'id'    => 'login',
                 'label' => 'Sign in',
                 'link'  => $url('login'),
                 'float' => 'right'
@@ -59,36 +59,35 @@ class NavManager
         } else {
             
             $items[] = [
-                'id' => 'admin',
-                'label' => 'Admin',
-                'dropdown' => [
+                'id'        => 'admin',
+                'label'     => 'Admin',
+                'dropdown'  => [
                     [
-                        'id' => 'users',
+                        'id'    => 'users',
                         'label' => 'Manage Users',
-                        'link' => $url('users')
+                        'link'  => $url('users')
                     ]
                 ]
             ];
             
             $items[] = [
-                'id' => 'logout',
-                'label' => $this->authService->getIdentity(),
-                'float' => 'right',
-                'dropdown' => [
+                'id'        => 'logout',
+                'label'     => $this->authService->getIdentity(),
+                'float'     => 'right',
+                'dropdown'  => [
                     [
-                        'id' => 'settings',
+                        'id'    => 'settings',
                         'label' => 'Settings',
-                        'link' => $url('application', ['action'=>'settings'])
+                        'link'  => $url('application', ['action'=>'settings'])
                     ],
                     [
-                        'id' => 'logout',
+                        'id'    => 'logout',
                         'label' => 'Sign out',
-                        'link' => $url('logout')
+                        'link'  => $url('logout')
                     ],
                 ]
             ];
         }
-        
         return $items;
     }
 }
