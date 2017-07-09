@@ -30,7 +30,6 @@ class SongsModel
         $em,
         $songsForm,
         $songsEntity
-            
     ) {
         $this->em           = $em;
         $this->songsForm    = $songsForm;
@@ -58,7 +57,7 @@ class SongsModel
     public function getSongsByStatus($status)
     {
         $em                 = $this->em;
-        $songsRepository    = $em->getRepository('Application\Entity\Songs');
+        $songsRepository    = $em->getRepository(\Application\Entity\Songs::class);
         $songs              = $songsRepository->getSongsByStatus($status);
         return $songs;
     }
@@ -69,7 +68,7 @@ class SongsModel
     public function getSongById($songId)
     {
         $em                 = $this->em;
-        $songsRepository    = $em->getRepository('Application\Entity\Songs');
+        $songsRepository    = $em->getRepository(\Application\Entity\Songs::class);
         $song               = $songsRepository->getSongById($songId);
         return $song;
     }
@@ -80,7 +79,7 @@ class SongsModel
     public function getSongStatusByStatus($status)
     {
         $em                     = $this->em;
-        $songStatusRepository   = $em->getRepository('Application\Entity\SongStatus');
+        $songStatusRepository   = $em->getRepository(\Application\Entity\SongStatus::class);
         $status                 = $songStatusRepository->getSongStatusByStatus($status);
         return $status;
     }
