@@ -1,9 +1,10 @@
 <?php
 namespace User\Form;
+
 use Zend\Form\Form;
-use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilter;
 use User\Validator\UserExistsValidator;
+
 /**
  * This form is used to collect user's email, full name, password and status. The form 
  * can work in two scenarios - 'create' and 'update'. In 'create' scenario, user
@@ -34,16 +35,12 @@ class UserForm extends Form
      */
     public function __construct($scenario = 'create', $entityManager = null, $user = null)
     {
-        // Define form name
         parent::__construct('user-form');
-     
-        // Set POST method for this form
         $this->setAttribute('method', 'post');
-        
-        // Save parameters for internal use.
-        $this->scenario = $scenario;
-        $this->entityManager = $entityManager;
-        $this->user = $user;
+
+        $this->scenario         = $scenario;
+        $this->entityManager    = $entityManager;
+        $this->user             = $user;
         
         $this->addElements();
         $this->addInputFilter();          
@@ -54,7 +51,6 @@ class UserForm extends Form
      */
     protected function addElements() 
     {
-        // Add "email" field
         $this->add([            
             'type'  => 'text',
             'name' => 'email',
@@ -63,7 +59,6 @@ class UserForm extends Form
             ],
         ]);
         
-        // Add "full_name" field
         $this->add([            
             'type'  => 'text',
             'name' => 'full_name',            
@@ -73,8 +68,6 @@ class UserForm extends Form
         ]);
         
         if ($this->scenario == 'create') {
-        
-            // Add "password" field
             $this->add([            
                 'type'  => 'password',
                 'name' => 'password',
@@ -83,7 +76,6 @@ class UserForm extends Form
                 ],
             ]);
             
-            // Add "confirm_password" field
             $this->add([            
                 'type'  => 'password',
                 'name' => 'confirm_password',
@@ -93,7 +85,6 @@ class UserForm extends Form
             ]);
         }
         
-        // Add "status" field
         $this->add([            
             'type'  => 'select',
             'name' => 'status',
@@ -106,7 +97,6 @@ class UserForm extends Form
             ],
         ]);
         
-        // Add the Submit button
         $this->add([
             'type'  => 'submit',
             'name' => 'submit',
@@ -121,106 +111,99 @@ class UserForm extends Form
      */
     private function addInputFilter() 
     {
-        // Create main input filter
         $inputFilter = new InputFilter();        
         $this->setInputFilter($inputFilter);
                 
-        // Add input for "email" field
         $inputFilter->add([
-                'name'     => 'email',
-                'required' => true,
-                'filters'  => [
-                    ['name' => 'StringTrim'],                    
-                ],                
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'min' => 1,
-                            'max' => 128
-                        ],
+            'name'     => 'email',
+            'required' => true,
+            'filters'  => [
+                ['name' => 'StringTrim'],                    
+            ],                
+            'validators' => [
+                [
+                    'name'    => 'StringLength',
+                    'options' => [
+                        'min' => 1,
+                        'max' => 128
                     ],
-                    [
-                        'name' => 'EmailAddress',
-                        'options' => [
-                            'allow' => \Zend\Validator\Hostname::ALLOW_DNS,
-                            'useMxCheck'    => false,                            
-                        ],
-                    ],
-                    [
-                        'name' => UserExistsValidator::class,
-                        'options' => [
-                            'entityManager' => $this->entityManager,
-                            'user' => $this->user
-                        ],
-                    ],                    
                 ],
-            ]);     
+                [
+                    'name' => 'EmailAddress',
+                    'options' => [
+                        'allow' => \Zend\Validator\Hostname::ALLOW_DNS,
+                        'useMxCheck'    => false,                            
+                    ],
+                ],
+                [
+                    'name' => UserExistsValidator::class,
+                    'options' => [
+                        'entityManager' => $this->entityManager,
+                        'user' => $this->user
+                    ],
+                ],                    
+            ],
+        ]);     
         
-        // Add input for "full_name" field
         $inputFilter->add([
-                'name'     => 'full_name',
+            'name'     => 'full_name',
+            'required' => true,
+            'filters'  => [                    
+                ['name' => 'StringTrim'],
+            ],                
+            'validators' => [
+                [
+                    'name'    => 'StringLength',
+                    'options' => [
+                        'min' => 1,
+                        'max' => 512
+                    ],
+                ],
+            ],
+        ]);
+        
+        if ($this->scenario == 'create') {
+            $inputFilter->add([
+                'name'     => 'password',
                 'required' => true,
-                'filters'  => [                    
-                    ['name' => 'StringTrim'],
+                'filters'  => [                        
                 ],                
                 'validators' => [
                     [
                         'name'    => 'StringLength',
                         'options' => [
-                            'min' => 1,
-                            'max' => 512
+                            'min' => 6,
+                            'max' => 64
                         ],
                     ],
                 ],
             ]);
-        
-        if ($this->scenario == 'create') {
             
-            // Add input for "password" field
             $inputFilter->add([
-                    'name'     => 'password',
-                    'required' => true,
-                    'filters'  => [                        
-                    ],                
-                    'validators' => [
-                        [
-                            'name'    => 'StringLength',
-                            'options' => [
-                                'min' => 6,
-                                'max' => 64
-                            ],
-                        ],
-                    ],
-                ]);
-            
-            // Add input for "confirm_password" field
-            $inputFilter->add([
-                    'name'     => 'confirm_password',
-                    'required' => true,
-                    'filters'  => [                        
-                    ],                
-                    'validators' => [
-                        [
-                            'name'    => 'Identical',
-                            'options' => [
-                                'token' => 'password',                            
-                            ],
-                        ],
-                    ],
-                ]);
-        }
-        
-        // Add input for "status" field
-        $inputFilter->add([
-                'name'     => 'status',
+                'name'     => 'confirm_password',
                 'required' => true,
-                'filters'  => [                    
-                    ['name' => 'ToInt'],
+                'filters'  => [                        
                 ],                
                 'validators' => [
-                    ['name'=>'InArray', 'options'=>['haystack'=>[1, 2]]]
+                    [
+                        'name'    => 'Identical',
+                        'options' => [
+                            'token' => 'password',                            
+                        ],
+                    ],
                 ],
-            ]);        
+            ]);
+        }
+        
+        $inputFilter->add([
+            'name'     => 'status',
+            'required' => true,
+            'filters'  => [                    
+                ['name' => 'ToInt'],
+            ],                
+            'validators' => [
+                ['name'=>'InArray', 'options'=>['haystack'=>[1, 2]]]
+            ],
+        ]);        
     }           
 }

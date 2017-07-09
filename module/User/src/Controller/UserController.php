@@ -1,11 +1,13 @@
 <?php
 namespace User\Controller;
+
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Entity\Users;
 use User\Form\UserForm;
 use User\Form\PasswordChangeForm;
 use User\Form\PasswordResetForm;
+
 /**
  * This controller is responsible for user management (adding, editing, 
  * viewing users and changing user's password).
@@ -29,8 +31,8 @@ class UserController extends AbstractActionController
      */
     public function __construct($entityManager, $userManager)
     {
-        $this->entityManager = $entityManager;
-        $this->userManager = $userManager;
+        $this->entityManager    = $entityManager;
+        $this->userManager      = $userManager;
     }
     
     /**
@@ -52,35 +54,20 @@ class UserController extends AbstractActionController
      */
     public function addAction()
     {
-        // Create user form
         $form = new UserForm('create', $this->entityManager);
-        
-        // Check if user has submitted the form
         if ($this->getRequest()->isPost()) {
-            
-            // Fill in the form with POST data
             $data = $this->params()->fromPost();            
-            
             $form->setData($data);
-            
-            // Validate form
             if($form->isValid()) {
-                
-                // Get filtered and validated data
                 $data = $form->getData();
-                
-                // Add user.
                 $user = $this->userManager->addUser($data);
-                
-                // Redirect to "view" page
                 return $this->redirect()->toRoute('users', 
                         ['action'=>'view', 'id'=>$user->getId()]);                
             }               
         } 
-        
         return new ViewModel([
-                'form' => $form
-            ]);
+            'form' => $form
+        ]);
     }
     
     /**
@@ -89,20 +76,17 @@ class UserController extends AbstractActionController
     public function viewAction() 
     {
         $id = (int)$this->params()->fromRoute('id', -1);
-        if ($id<1) {
+        if ($id < 1) {
             $this->getResponse()->setStatusCode(404);
             return;
         }
-        
         // Find a user with such ID.
         $user = $this->entityManager->getRepository(Users::class)
                 ->find($id);
-        
         if ($user == null) {
             $this->getResponse()->setStatusCode(404);
             return;
         }
-                
         return new ViewModel([
             'user' => $user
         ]);
@@ -114,55 +98,40 @@ class UserController extends AbstractActionController
     public function editAction() 
     {
         $id = (int)$this->params()->fromRoute('id', -1);
-        if ($id<1) {
+        if ($id < 1) {
             $this->getResponse()->setStatusCode(404);
             return;
         }
-        
         $user = $this->entityManager->getRepository(Users::class)
                 ->find($id);
-        
         if ($user == null) {
             $this->getResponse()->setStatusCode(404);
             return;
         }
-        
-        // Create user form
         $form = new UserForm('update', $this->entityManager, $user);
-        
-        // Check if user has submitted the form
         if ($this->getRequest()->isPost()) {
-            
-            // Fill in the form with POST data
             $data = $this->params()->fromPost();            
-            
             $form->setData($data);
-            
-            // Validate form
             if($form->isValid()) {
-                
-                // Get filtered and validated data
                 $data = $form->getData();
-                
                 // Update the user.
                 $this->userManager->updateUser($user, $data);
-                
                 // Redirect to "view" page
                 return $this->redirect()->toRoute('users', 
                         ['action'=>'view', 'id'=>$user->getId()]);                
             }               
         } else {
-            $form->setData(array(
-                    'full_name'=>$user->getFullName(),
-                    'email'=>$user->getEmail(),
-                    'status'=>$user->getStatus(),                    
-                ));
+            $form->setData([
+                'full_name' => $user->getFullName(),
+                'email'     => $user->getEmail(),
+                'status'    => $user->getStatus(),                    
+            ]);
         }
         
-        return new ViewModel(array(
+        return new ViewModel([
             'user' => $user,
             'form' => $form
-        ));
+        ]);
     }
     
     /**
@@ -183,24 +152,12 @@ class UserController extends AbstractActionController
             $this->getResponse()->setStatusCode(404);
             return;
         }
-        
-        // Create "change password" form
         $form = new PasswordChangeForm('change');
-        
-        // Check if user has submitted the form
         if ($this->getRequest()->isPost()) {
-            
-            // Fill in the form with POST data
             $data = $this->params()->fromPost();            
-            
             $form->setData($data);
-            
-            // Validate form
             if($form->isValid()) {
-                
-                // Get filtered and validated data
                 $data = $form->getData();
-                
                 // Try to change password.
                 if (!$this->userManager->changePassword($user, $data)) {
                     $this->flashMessenger()->addErrorMessage(
@@ -209,7 +166,6 @@ class UserController extends AbstractActionController
                     $this->flashMessenger()->addSuccessMessage(
                             'Changed the password successfully.');
                 }
-                
                 // Redirect to "view" page
                 return $this->redirect()->toRoute('users', 
                         ['action'=>'view', 'id'=>$user->getId()]);                
@@ -227,20 +183,11 @@ class UserController extends AbstractActionController
      */
     public function resetPasswordAction()
     {
-        // Create form
         $form = new PasswordResetForm();
-        
-        // Check if user has submitted the form
         if ($this->getRequest()->isPost()) {
-            
-            // Fill in the form with POST data
             $data = $this->params()->fromPost();            
-            
             $form->setData($data);
-            
-            // Validate form
             if($form->isValid()) {
-                
                 // Look for the user with such email.
                 $user = $this->entityManager->getRepository(Users::class)
                         ->findOneByEmail($data['email']);                
@@ -270,14 +217,10 @@ class UserController extends AbstractActionController
      */
     public function messageAction() 
     {
-        // Get message ID from route.
         $id = (string)$this->params()->fromRoute('id');
-        
-        // Validate input argument.
-        if($id!='invalid-email' && $id!='sent' && $id!='set' && $id!='failed') {
+        if($id != 'invalid-email' && $id != 'sent' && $id != 'set' && $id != 'failed') {
             throw new \Exception('Invalid message ID specified');
         }
-        
         return new ViewModel([
             'id' => $id
         ]);
@@ -291,35 +234,23 @@ class UserController extends AbstractActionController
         $token = $this->params()->fromQuery('token', null);
         
         // Validate token length
-        if ($token!=null && (!is_string($token) || strlen($token)!=32)) {
+        if ($token != null && (!is_string($token) || strlen($token) != 32)) {
             throw new \Exception('Invalid token type or length');
         }
         
-        if($token===null || 
+        if($token === null || 
            !$this->userManager->validatePasswordResetToken($token)) {
             return $this->redirect()->toRoute('users', 
                     ['action'=>'message', 'id'=>'failed']);
         }
-                
-        // Create form
         $form = new PasswordChangeForm('reset');
-        
-        // Check if user has submitted the form
         if ($this->getRequest()->isPost()) {
-            
-            // Fill in the form with POST data
             $data = $this->params()->fromPost();            
-            
             $form->setData($data);
-            
-            // Validate form
             if($form->isValid()) {
-                
                 $data = $form->getData();
-                                               
                 // Set new password for the user.
                 if ($this->userManager->setNewPasswordByToken($token, $data['new_password'])) {
-                    
                     // Redirect to "message" page
                     return $this->redirect()->toRoute('users', 
                             ['action'=>'message', 'id'=>'set']);                 

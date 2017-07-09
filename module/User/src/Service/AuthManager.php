@@ -1,6 +1,8 @@
 <?php
 namespace User\Service;
+
 use Zend\Authentication\Result;
+
 /**
  * The AuthManager service is responsible for user's login/logout and simple access 
  * filtering. The access filtering feature checks whether the current visitor 
@@ -29,11 +31,14 @@ class AuthManager
     /**
      * Constructs the service.
      */
-    public function __construct($authService, $sessionManager, $config) 
-    {
-        $this->authService = $authService;
-        $this->sessionManager = $sessionManager;
-        $this->config = $config;
+    public function __construct(
+        $authService, 
+        $sessionManager, 
+        $config
+    ) {
+        $this->authService      = $authService;
+        $this->sessionManager   = $sessionManager;
+        $this->config           = $config;
     }
     
     /**
@@ -60,7 +65,6 @@ class AuthManager
             // Session cookie will expire in 1 month (30 days).
             $this->sessionManager->rememberMe(60*60*24*30);
         }
-        
         return $result;
     }
     
@@ -73,7 +77,6 @@ class AuthManager
         if ($this->authService->getIdentity()==null) {
             throw new \Exception('The user is not logged in');
         }
-        
         // Remove identity from session.
         $this->authService->clearIdentity();               
     }
