@@ -42,7 +42,7 @@ class CalendarModel
     public function getUpcomingEvents($numberOfEvents = 3)
     {
         $em         = $this->em;
-        $eventsRepo = $em->getRepository(\Application\Entity\Events::class);
+        $eventsRepo = $em->getRepository('Application\Entity\Events');
         $events     = $eventsRepo->getUpcomingEvents($numberOfEvents);
         return $events;
     }
@@ -82,7 +82,7 @@ class CalendarModel
     public function getEventById($eventId)
     {
         $em         = $this->em;
-        $eventsRepo = $em->getRepository(\Application\Entity\Events::class);
+        $eventsRepo = $em->getRepository('Application\Entity\Events');
         $event      = $eventsRepo->getEventById($eventId);
         return $event;
     }
