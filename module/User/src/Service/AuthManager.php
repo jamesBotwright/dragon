@@ -1,8 +1,6 @@
 <?php
 namespace User\Service;
-
 use Zend\Authentication\Result;
-
 /**
  * The AuthManager service is responsible for user's login/logout and simple access 
  * filtering. The access filtering feature checks whether the current visitor 
@@ -31,14 +29,11 @@ class AuthManager
     /**
      * Constructs the service.
      */
-    public function __construct(
-        $authService, 
-        $sessionManager, 
-        $config
-    ) {
-        $this->authService      = $authService;
-        $this->sessionManager   = $sessionManager;
-        $this->config           = $config;
+    public function __construct($authService, $sessionManager, $config) 
+    {
+        $this->authService = $authService;
+        $this->sessionManager = $sessionManager;
+        $this->config = $config;
     }
     
     /**
@@ -65,6 +60,7 @@ class AuthManager
             // Session cookie will expire in 1 month (30 days).
             $this->sessionManager->rememberMe(60*60*24*30);
         }
+        
         return $result;
     }
     
@@ -74,9 +70,10 @@ class AuthManager
     public function logout()
     {
         // Allow to log out only when user is logged in.
-        if ($this->authService->getIdentity() == null) {
+        if ($this->authService->getIdentity()==null) {
             throw new \Exception('The user is not logged in');
         }
+        
         // Remove identity from session.
         $this->authService->clearIdentity();               
     }
@@ -97,7 +94,7 @@ class AuthManager
         // In permissive mode, if an action is not listed under the 'access_filter' key, 
         // access to it is permitted to anyone (even for not logged in users.
         // Restrictive mode is more secure and recommended to use.
-        $mode = isset($this->config['options']['mode']) ? $this->config['options']['mode'] : 'restrictive';
+        $mode = isset($this->config['options']['mode'])?$this->config['options']['mode']:'restrictive';
         if ($mode!='restrictive' && $mode!='permissive')
             throw new \Exception('Invalid access filter mode (expected either restrictive or permissive mode');
         
