@@ -93,7 +93,7 @@ class CalendarModel
     public function getEvents($startDate, $endDate)
     {
         $em         = $this->em;
-        $eventsRepo = $em->getRepository(Application\Entity\Events::class);
+        $eventsRepo = $em->getRepository(\Application\Entity\Events::class);
         $events     = $eventsRepo->getEvents($startDate, $endDate);
         return $events;
     }
