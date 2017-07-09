@@ -74,7 +74,7 @@ class AuthManager
     public function logout()
     {
         // Allow to log out only when user is logged in.
-        if ($this->authService->getIdentity()==null) {
+        if ($this->authService->getIdentity() == null) {
             throw new \Exception('The user is not logged in');
         }
         // Remove identity from session.
@@ -97,7 +97,7 @@ class AuthManager
         // In permissive mode, if an action is not listed under the 'access_filter' key, 
         // access to it is permitted to anyone (even for not logged in users.
         // Restrictive mode is more secure and recommended to use.
-        $mode = isset($this->config['options']['mode'])?$this->config['options']['mode']:'restrictive';
+        $mode = isset($this->config['options']['mode']) ? $this->config['options']['mode'] : 'restrictive';
         if ($mode!='restrictive' && $mode!='permissive')
             throw new \Exception('Invalid access filter mode (expected either restrictive or permissive mode');
         

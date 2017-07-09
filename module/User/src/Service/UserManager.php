@@ -44,16 +44,11 @@ class UserManager
         $passwordHash = $bcrypt->create($data['password']);        
         $user->setPassword($passwordHash);
         $user->setStatus($data['status']);
-        
         $currentDate = date('Y-m-d H:i:s');
         $user->setDateCreated($currentDate);        
                 
-        // Add the entity to the entity manager.
         $this->entityManager->persist($user);
-        
-        // Apply changes to database.
         $this->entityManager->flush();
-        
         return $user;
     }
     
@@ -70,8 +65,6 @@ class UserManager
         $user->setEmail($data['email']);
         $user->setFullName($data['full_name']);        
         $user->setStatus($data['status']);        
-        
-        // Apply changes to database.
         $this->entityManager->flush();
         return true;
     }
@@ -186,7 +179,7 @@ class UserManager
         $user = $this->entityManager->getRepository(Users::class)
                 ->findOneByPasswordResetToken($passwordResetToken);
         
-        if ($user==null) {
+        if ($user == null) {
             return false;
         }
         // Set new password for user        
