@@ -41,9 +41,9 @@ return [
                 ],
             ],
             'calendar' => [
-                'type'    => Segment::class,
+                'type'    => Literal::class,
                 'options' => [
-                    'route'    => '/calendar[/:id]',
+                    'route'    => '/calendar',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'calendar',
@@ -51,9 +51,9 @@ return [
                 ],
             ],
             'songs' => [
-                'type'    => Segment::class,
+                'type'    => Literal::class,
                 'options' => [
-                    'route'    => '/songs[/:id]',
+                    'route'    => '/songs',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'songs',

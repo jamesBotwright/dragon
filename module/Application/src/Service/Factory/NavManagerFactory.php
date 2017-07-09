@@ -15,11 +15,9 @@ class NavManagerFactory
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {        
-        $authService = $container->get(\Zend\Authentication\AuthenticationService::class);
-        
-        $viewHelperManager = $container->get('ViewHelperManager');
-        $urlHelper = $viewHelperManager->get('url');
-        
+        $authService        = $container->get(\Zend\Authentication\AuthenticationService::class);
+        $viewHelperManager  = $container->get('ViewHelperManager');
+        $urlHelper          = $viewHelperManager->get('url');
         return new NavManager($authService, $urlHelper);
     }
 }

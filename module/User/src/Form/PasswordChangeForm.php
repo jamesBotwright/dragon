@@ -1,8 +1,9 @@
 <?php
 namespace User\Form;
+
 use Zend\Form\Form;
-use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilter;
+
 /**
  * This form is used when changing user's password (to collect user's old password 
  * and new password) or when resetting user's password (when user forgot his password).
@@ -18,14 +19,9 @@ class PasswordChangeForm extends Form
      */
     public function __construct($scenario)
     {
-        // Define form name
         parent::__construct('password-change-form');
-     
         $this->scenario = $scenario;
-        
-        // Set POST method for this form
         $this->setAttribute('method', 'post');
-        
         $this->addElements();
         $this->addInputFilter();          
     }
@@ -37,8 +33,6 @@ class PasswordChangeForm extends Form
     {
         // If scenario is 'change', we do not ask for old password.
         if ($this->scenario == 'change') {
-        
-            // Add "old_password" field
             $this->add([            
                 'type'  => 'password',
                 'name' => 'old_password',
@@ -48,7 +42,6 @@ class PasswordChangeForm extends Form
             ]);       
         }
         
-        // Add "new_password" field
         $this->add([            
             'type'  => 'password',
             'name' => 'new_password',
@@ -57,7 +50,6 @@ class PasswordChangeForm extends Form
             ],
         ]);
         
-        // Add "confirm_new_password" field
         $this->add([            
             'type'  => 'password',
             'name' => 'confirm_new_password',
@@ -66,7 +58,6 @@ class PasswordChangeForm extends Form
             ],
         ]);
         
-        // Add the CSRF field
         $this->add([
             'type' => 'csrf',
             'name' => 'csrf',
@@ -77,7 +68,6 @@ class PasswordChangeForm extends Form
             ],
         ]);
         
-        // Add the Submit button
         $this->add([
             'type'  => 'submit',
             'name' => 'submit',
@@ -92,33 +82,12 @@ class PasswordChangeForm extends Form
      */
     private function addInputFilter() 
     {
-        // Create main input filter
         $inputFilter = new InputFilter();        
         $this->setInputFilter($inputFilter);
         
         if ($this->scenario == 'change') {
-            
-            // Add input for "old_password" field
             $inputFilter->add([
-                    'name'     => 'old_password',
-                    'required' => true,
-                    'filters'  => [                    
-                    ],                
-                    'validators' => [
-                        [
-                            'name'    => 'StringLength',
-                            'options' => [
-                                'min' => 6,
-                                'max' => 64
-                            ],
-                        ],
-                    ],
-                ]);      
-        }
-        
-        // Add input for "new_password" field
-        $inputFilter->add([
-                'name'     => 'new_password',
+                'name'     => 'old_password',
                 'required' => true,
                 'filters'  => [                    
                 ],                
@@ -131,22 +100,38 @@ class PasswordChangeForm extends Form
                         ],
                     ],
                 ],
-            ]);
+            ]);      
+        }
         
-        // Add input for "confirm_new_password" field
         $inputFilter->add([
-                'name'     => 'confirm_new_password',
-                'required' => true,
-                'filters'  => [                    
-                ],                
-                'validators' => [
-                    [
-                        'name'    => 'Identical',
-                        'options' => [
-                            'token' => 'new_password',                            
-                        ],
+            'name'     => 'new_password',
+            'required' => true,
+            'filters'  => [                    
+            ],                
+            'validators' => [
+                [
+                    'name'    => 'StringLength',
+                    'options' => [
+                        'min' => 6,
+                        'max' => 64
                     ],
                 ],
-            ]);
+            ],
+        ]);
+        
+        $inputFilter->add([
+            'name'     => 'confirm_new_password',
+            'required' => true,
+            'filters'  => [                    
+            ],                
+            'validators' => [
+                [
+                    'name'    => 'Identical',
+                    'options' => [
+                        'token' => 'new_password',                            
+                    ],
+                ],
+            ],
+        ]);
     }
 }
