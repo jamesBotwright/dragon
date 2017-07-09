@@ -1,10 +1,8 @@
 <?php
 namespace User\Service;
-
 use Application\Entity\Users;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\Math\Rand;
-
 /**
  * This service is responsible for adding/editing users
  * and changing user password.
@@ -43,12 +41,18 @@ class UserManager
         $bcrypt = new Bcrypt();
         $passwordHash = $bcrypt->create($data['password']);        
         $user->setPassword($passwordHash);
+        
         $user->setStatus($data['status']);
+        
         $currentDate = date('Y-m-d H:i:s');
         $user->setDateCreated($currentDate);        
                 
+        // Add the entity to the entity manager.
         $this->entityManager->persist($user);
+        
+        // Apply changes to database.
         $this->entityManager->flush();
+        
         return $user;
     }
     
@@ -58,13 +62,15 @@ class UserManager
     public function updateUser($user, $data) 
     {
         // Do not allow to change user email if another user with such email already exits.
-        if($user->getEmail() != $data['email'] && $this->checkUserExists($data['email'])) {
+        if($user->getEmail()!=$data['email'] && $this->checkUserExists($data['email'])) {
             throw new \Exception("Another user with email address " . $data['email'] . " already exists");
         }
         
         $user->setEmail($data['email']);
         $user->setFullName($data['full_name']);        
         $user->setStatus($data['status']);        
+        
+        // Apply changes to database.
         $this->entityManager->flush();
         return true;
     }
@@ -76,7 +82,7 @@ class UserManager
     public function createAdminUserIfNotExists()
     {
         $user = $this->entityManager->getRepository(Users::class)->findOneBy([]);
-        if ($user == null) {
+        if ($user==null) {
             $user = new Users();
             $user->setEmail('admin@example.com');
             $user->setFullName('Admin');
@@ -107,8 +113,8 @@ class UserManager
      */
     public function validatePassword($user, $password) 
     {
-        $bcrypt         = new Bcrypt();
-        $passwordHash   = $user->getPassword();
+        $bcrypt = new Bcrypt();
+        $passwordHash = $user->getPassword();
         
         if ($bcrypt->verify($password, $passwordHash)) {
             return true;
@@ -154,16 +160,19 @@ class UserManager
         $user = $this->entityManager->getRepository(Users::class)
                 ->findOneByPasswordResetToken($passwordResetToken);
         
-        if($user == null) {
+        if($user==null) {
             return false;
         }
-        $tokenCreationDate  = $user->getPasswordResetTokenCreationDate();
-        $tokenCreationDate  = strtotime($tokenCreationDate);
-        $currentDate        = strtotime('now');
+        
+        $tokenCreationDate = $user->getPasswordResetTokenCreationDate();
+        $tokenCreationDate = strtotime($tokenCreationDate);
+        
+        $currentDate = strtotime('now');
         
         if ($currentDate - $tokenCreationDate > 24*60*60) {
             return false; // expired
         }
+        
         return true;
     }
     
@@ -179,18 +188,21 @@ class UserManager
         $user = $this->entityManager->getRepository(Users::class)
                 ->findOneByPasswordResetToken($passwordResetToken);
         
-        if ($user == null) {
+        if ($user==null) {
             return false;
         }
+                
         // Set new password for user        
-        $bcrypt         = new Bcrypt();
-        $passwordHash   = $bcrypt->create($newPassword);        
+        $bcrypt = new Bcrypt();
+        $passwordHash = $bcrypt->create($newPassword);        
         $user->setPassword($passwordHash);
                 
         // Remove password reset token
         $user->setPasswordResetToken(null);
         $user->setPasswordResetTokenCreationDate(null);
+        
         $this->entityManager->flush();
+        
         return true;
     }
     
@@ -201,20 +213,22 @@ class UserManager
     public function changePassword($user, $data)
     {
         $oldPassword = $data['old_password'];
+        
         // Check that old password is correct
         if (!$this->validatePassword($user, $oldPassword)) {
             return false;
         }                
         
         $newPassword = $data['new_password'];
+        
         // Check password length
         if (strlen($newPassword)<6 || strlen($newPassword)>64) {
             return false;
         }
         
         // Set new password for user        
-        $bcrypt         = new Bcrypt();
-        $passwordHash   = $bcrypt->create($newPassword);
+        $bcrypt = new Bcrypt();
+        $passwordHash = $bcrypt->create($newPassword);
         $user->setPassword($passwordHash);
         
         // Apply changes
