@@ -6,7 +6,7 @@ use Zend\Authentication\AuthenticationService;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\Session\SessionManager;
 use Zend\Authentication\Storage\Session as SessionStorage;
-use User\Service\AuthAdapter;
+use User\Service\AuthAdaptor;
 
 /**
  * The factory responsible for creating of authentication service.
@@ -21,7 +21,7 @@ class AuthenticationServiceFactory implements FactoryInterface
     {
         $sessionManager = $container->get(SessionManager::class);
         $authStorage    = new SessionStorage('Zend_Auth', 'session', $sessionManager);
-        $authAdapter    = $container->get(AuthAdapter::class);
-        return new AuthenticationService($authStorage, $authAdapter);
+        $authAdaptor    = $container->get(AuthAdaptor::class);
+        return new AuthenticationService($authStorage, $authAdaptor);
     }
 }
