@@ -206,9 +206,8 @@ class UserController extends AbstractActionController
             }               
         } 
         $viewModel = new ViewModel();
-        $viewModel->setVariables(['form' => $form]);
-        $viewModel->setTemplate('application/layout/layout-login');
-        $viewModel->setTerminal(true);
+        $viewModel->setVariables(['form' => $form,]);
+        $this->layout('layout/layout-login.phtml');
         return $viewModel;
     }
     
@@ -233,12 +232,10 @@ class UserController extends AbstractActionController
     public function setPasswordAction()
     {
         $token = $this->params()->fromQuery('token', null);
-        
         // Validate token length
         if ($token != null && (!is_string($token) || strlen($token) != 32)) {
             throw new \Exception('Invalid token type or length');
         }
-        
         if($token === null || 
            !$this->userManager->validatePasswordResetToken($token)) {
             return $this->redirect()->toRoute('users', 
@@ -262,7 +259,6 @@ class UserController extends AbstractActionController
                 }
             }               
         } 
-        
         return new ViewModel([                    
             'form' => $form
         ]);
