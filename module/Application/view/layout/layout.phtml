@@ -31,11 +31,6 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"> test 1</span> test 1
-                        <span class="icon-bar"> test 2</span> test 2
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="<?= $this->url('home') ?>">
                         <img src="<?= $this->basePath('img/flame.png') ?>" height="28" alt="Rock and Roll <?= \Application\Module::VERSION ?>"/>&nbsp;The Minute Steaks
                     </a>
@@ -50,6 +45,19 @@
                         </li>
                     </ul>
                 </div>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li class="dropdown user-dropdown">
+<!--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-user"></i> 
+                            <?php echo $this->user_Session->username . " - " . $user_Session->role; ?> <b class="caret"></b>
+                        </a>-->
+                        <ul class="dropdown-menu">
+<!--                            <li><a href="/users/profile"><i class="fa fa-user"></i> Profile</a></li>
+                            <li class="divider"></li>-->
+                            <li><a href="<?php echo $this->url('logout');?>"><i class="fa fa-power-off"></i> Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </nav>
         <div class="container">
