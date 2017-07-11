@@ -244,7 +244,7 @@ class UserController extends AbstractActionController
                 // Look for the user with such email.
                 $user = $this->entityManager->getRepository(Users::class)
                         ->findOneByEmail($data['email']);                
-                if ($user!=null) {
+                if ($user != null) {
                     // Generate a new password for user and send an E-mail 
                     // notification about that.
                     $this->userManager->generatePasswordResetToken($user);
@@ -258,10 +258,10 @@ class UserController extends AbstractActionController
                 }
             }               
         } 
-        
-        return new ViewModel([                    
-            'form' => $form
-        ]);
+        $viewModel = new ViewModel();
+        $viewModel->setVariables(['form' => $form,]);
+        $this->layout('layout/layout-login.phtml');
+        return $viewModel;
     }
     
     /**
@@ -289,13 +289,11 @@ class UserController extends AbstractActionController
     public function setPasswordAction()
     {
         $token = $this->params()->fromQuery('token', null);
-        
         // Validate token length
         if ($token!=null && (!is_string($token) || strlen($token)!=32)) {
             throw new \Exception('Invalid token type or length');
         }
-        
-        if($token===null || 
+        if($token === null || 
            !$this->userManager->validatePasswordResetToken($token)) {
             return $this->redirect()->toRoute('users', 
                     ['action'=>'message', 'id'=>'failed']);
@@ -330,7 +328,6 @@ class UserController extends AbstractActionController
                 }
             }               
         } 
-        
         return new ViewModel([                    
             'form' => $form
         ]);

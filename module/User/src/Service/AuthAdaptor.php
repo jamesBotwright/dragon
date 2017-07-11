@@ -13,7 +13,7 @@ use Application\Entity\Users;
  * is saved to session and can be retrieved later with Identity view helper provided
  * by ZF3.
  */
-class AuthAdapter implements AdapterInterface
+class AuthAdaptor implements AdapterInterface
 {
     /**
      * User email.

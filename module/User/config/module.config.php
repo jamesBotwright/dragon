@@ -79,16 +79,16 @@ return [
                 // to anyone.
                 ['actions' => ['resetPassword', 'message', 'setPassword'], 'allow' => '*'],
                 // Give access to "index", "add", "edit", "view", "changePassword" actions to authorized users only.
-                ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '@']
+                ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '*']
             ],
         ]
     ],
     'service_manager' => [
         'factories' => [
-            \Zend\Authentication\AuthenticationService::class => Service\Factory\AuthenticationServiceFactory::class,
-            Service\AuthAdapter::class => Service\Factory\AuthAdapterFactory::class,
+            Service\AuthAdaptor::class => Service\Factory\AuthAdaptorFactory::class,
             Service\AuthManager::class => Service\Factory\AuthManagerFactory::class,
             Service\UserManager::class => Service\Factory\UserManagerFactory::class,
+            \Zend\Authentication\AuthenticationService::class => Service\Factory\AuthenticationServiceFactory::class,
         ],
     ],
     'view_manager' => [
