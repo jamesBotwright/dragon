@@ -205,10 +205,11 @@ class UserController extends AbstractActionController
                 }
             }               
         } 
-        
-        return new ViewModel([                    
-            'form' => $form
-        ]);
+        $viewModel = new ViewModel();
+        $viewModel->setVariables(['form' => $form]);
+        $viewModel->setTemplate('application/layout/layout-login');
+        $viewModel->setTerminal(true);
+        return $viewModel;
     }
     
     /**
