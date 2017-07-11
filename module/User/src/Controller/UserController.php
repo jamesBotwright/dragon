@@ -191,7 +191,7 @@ class UserController extends AbstractActionController
                 // Look for the user with such email.
                 $user = $this->entityManager->getRepository(Users::class)
                         ->findOneByEmail($data['email']);                
-                if ($user!=null) {
+                if ($user != null) {
                     // Generate a new password for user and send an E-mail 
                     // notification about that.
                     $this->userManager->generatePasswordResetToken($user);
