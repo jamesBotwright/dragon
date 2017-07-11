@@ -114,8 +114,7 @@ class AuthController extends AbstractActionController
             'isLoginError'  => $isLoginError,
             'redirectUrl'   => $redirectUrl
         ]);
-        $viewModel->setTemplate('application/layout/layout-login.phtml');
-        $viewModel->setTerminal(true);
+        $this->layout('layout/layout-login.phtml');
         return $viewModel;
     }
     
