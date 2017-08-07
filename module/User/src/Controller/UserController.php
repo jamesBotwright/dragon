@@ -123,6 +123,7 @@ class UserController extends AbstractActionController
         } else {
             $form->setData([
                 'full_name' => $user->getFullName(),
+                'username'  => $user->getUsername(),
                 'email'     => $user->getEmail(),
                 'status'    => $user->getStatus(),                    
             ]);
@@ -190,7 +191,7 @@ class UserController extends AbstractActionController
             if($form->isValid()) {
                 // Look for the user with such email.
                 $user = $this->entityManager->getRepository(Users::class)
-                        ->findOneByEmail($data['email']);                
+                        ->findOneByUsername($data['username']);                
                 if ($user != null) {
                     // Generate a new password for user and send an E-mail 
                     // notification about that.
@@ -201,7 +202,7 @@ class UserController extends AbstractActionController
                             ['action'=>'message', 'id'=>'sent']);                 
                 } else {
                     return $this->redirect()->toRoute('users', 
-                            ['action'=>'message', 'id'=>'invalid-email']);                 
+                            ['action'=>'message', 'id'=>'invalid-username']);                 
                 }
             }               
         } 
@@ -218,7 +219,7 @@ class UserController extends AbstractActionController
     public function messageAction() 
     {
         $id = (string)$this->params()->fromRoute('id');
-        if($id != 'invalid-email' && $id != 'sent' && $id != 'set' && $id != 'failed') {
+        if($id != 'invalid-username' && $id != 'sent' && $id != 'set' && $id != 'failed') {
             throw new \Exception('Invalid message ID specified');
         }
         return new ViewModel([

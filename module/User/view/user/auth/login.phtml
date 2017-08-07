@@ -3,20 +3,20 @@ $this->headTitle('Sign in');
 
 $this->mainMenu()->setActiveItemId('login');
 
-$form->get('email')->setAttributes([
-    'class'=>'form-control', 
-    'placeholder'=>'Email address',
-    'required' => true,
-    'autofocus' => true
+$form->get('username')->setAttributes([
+    'class'         => 'form-control', 
+    'placeholder'   => 'Username',
+    'required'      => true,
+    'autofocus'     => true
     ])
     ->setLabelAttributes([
         'class' => 'sr-only'
     ]);
 
 $form->get('password')->setAttributes([
-    'class'=>'form-control', 
-    'placeholder'=>'Password',
-    'required' => true,
+    'class'         => 'form-control', 
+    'placeholder'   => 'Password',
+    'required'      => true,
     ])
     ->setLabelAttributes([
         'class' => 'sr-only'
@@ -33,8 +33,8 @@ $form->get('password')->setAttributes([
                 <a href="<?= $this->url('reset-password') ?>">Forgot password?</a>
             </div>
             <?php endif; ?>
-            <?= $this->formLabel($form->get('email')); ?>
-            <?= $this->formElement($form->get('email')); ?>
+            <?= $this->formLabel($form->get('username')); ?>
+            <?= $this->formElement($form->get('username')); ?>
             <?= $this->formLabel($form->get('password')); ?>
             <?= $this->formElement($form->get('password')); ?>
             <div class="checkbox">

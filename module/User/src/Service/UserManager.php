@@ -31,12 +31,13 @@ class UserManager
     public function addUser($data) 
     {
         // Do not allow several users with the same email address.
-        if($this->checkUserExists($data['email'])) {
-            throw new \Exception("User with email address " . $data['$email'] . " already exists");
+        if($this->checkUserExists($data['username'])) {
+            throw new \Exception("User with username " . $data['username'] . " already exists");
         }
         
         // Create new User entity.
         $user = new Users();
+        $user->setUsername($data['username']);
         $user->setEmail($data['email']);
         $user->setFullName($data['full_name']);        
         // Encrypt password and store the password in encrypted state.
@@ -58,10 +59,11 @@ class UserManager
     public function updateUser($user, $data) 
     {
         // Do not allow to change user email if another user with such email already exits.
-        if($user->getEmail() != $data['email'] && $this->checkUserExists($data['email'])) {
-            throw new \Exception("Another user with email address " . $data['email'] . " already exists");
+        if($user->getUsername() != $data['username'] && $this->checkUserExists($data['username'])) {
+            throw new \Exception("Another user with username " . $data['username'] . " already exists");
         }
         
+        $user->setUsername($data['username']);
         $user->setEmail($data['email']);
         $user->setFullName($data['full_name']);        
         $user->setStatus($data['status']);        
@@ -78,6 +80,7 @@ class UserManager
         $user = $this->entityManager->getRepository(Users::class)->findOneBy([]);
         if ($user == null) {
             $user = new Users();
+            $user->setUsername('admin');
             $user->setEmail('admin@example.com');
             $user->setFullName('Admin');
             $bcrypt = new Bcrypt();
@@ -94,10 +97,10 @@ class UserManager
     /**
      * Checks whether an active user with given email address already exists in the database.     
      */
-    public function checkUserExists($email) {
+    public function checkUserExists($username) {
         
         $user = $this->entityManager->getRepository(Users::class)
-                ->findOneByEmail($email);
+                ->findOneByUsername($username);
         
         return $user !== null;
     }

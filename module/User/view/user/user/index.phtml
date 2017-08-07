@@ -20,6 +20,7 @@ $this->pageBreadcrumbs()->setItems([
 
    <tr>
         <th>ID</th>
+        <th>Username</th>
         <th>E-mail</th>
         <th>Full Name</th>
         <th>Date Created</th>
@@ -31,13 +32,13 @@ $this->pageBreadcrumbs()->setItems([
     
     <tr>
         <td><?= $this->escapeHtml($user->getId()); ?></td>
+        <td><?= $this->escapeHtml($user->getUsername()); ?></td>
         <td>
             <a href="<?= $this->url('users', ['action'=>'view', 'id'=>$user->getId()]); ?>">
                 <?= $this->escapeHtml($user->getEmail()); ?>
             </a> 
         </td>
-        <td><?= $this->escapeHtml($user->getFullName()); ?></a> 
-        </td>
+        <td><?= $this->escapeHtml($user->getFullName()); ?></td>
         <td><?= $this->escapeHtml($user->getDateCreated()); ?></td>        
         <td><?= $this->escapeHtml($user->getStatusAsString()); ?></td>
         <td>

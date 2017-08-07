@@ -26,17 +26,17 @@ class LoginForm extends Form
     protected function addElements() 
     {
         $this->add([            
-            'type'  => 'text',
-            'name' => 'email',
-            'options' => [
-                'label' => 'Your E-mail',
+            'type'      => 'text',
+            'name'      => 'username',
+            'options'   => [
+                'label' => 'Your Username',
             ],
         ]);
         
         $this->add([            
-            'type'  => 'password',
-            'name' => 'password',
-            'options' => [
+            'type'      => 'password',
+            'name'      => 'password',
+            'options'   => [
                 'label' => 'Password',
             ],
         ]);
@@ -83,20 +83,11 @@ class LoginForm extends Form
         $this->setInputFilter($inputFilter);
                 
         $inputFilter->add([
-            'name'     => 'email',
+            'name'     => 'username',
             'required' => true,
             'filters'  => [
                 ['name' => 'StringTrim'],                    
             ],                
-            'validators' => [
-                [
-                    'name' => 'EmailAddress',
-                    'options' => [
-                        'allow' => \Zend\Validator\Hostname::ALLOW_DNS,
-                        'useMxCheck' => false,                            
-                    ],
-                ],
-            ],
         ]);     
         
         $inputFilter->add([
