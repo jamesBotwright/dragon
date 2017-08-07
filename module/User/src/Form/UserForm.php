@@ -53,6 +53,14 @@ class UserForm extends Form
     {
         $this->add([            
             'type'  => 'text',
+            'name' => 'username',
+            'options' => [
+                'label' => 'Username',
+            ],
+        ]);
+        
+        $this->add([            
+            'type'  => 'text',
             'name' => 'email',
             'options' => [
                 'label' => 'E-mail',
@@ -113,6 +121,14 @@ class UserForm extends Form
     {
         $inputFilter = new InputFilter();        
         $this->setInputFilter($inputFilter);
+                
+        $inputFilter->add([
+            'name'     => 'username',
+            'required' => true,
+            'filters'  => [                    
+                ['name' => 'StringTrim'],
+            ],   
+        ]);
                 
         $inputFilter->add([
             'name'     => 'email',
