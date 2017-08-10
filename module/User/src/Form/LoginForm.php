@@ -30,18 +30,18 @@ class LoginForm extends Form
     {
         // Add "email" field
         $this->add([            
-            'type'  => 'text',
-            'name' => 'email',
-            'options' => [
-                'label' => 'Your E-mail',
+            'type'      => 'text',
+            'name'      => 'username',
+            'options'   => [
+                'label' => 'Your Username',
             ],
         ]);
         
         // Add "password" field
         $this->add([            
-            'type'  => 'password',
-            'name' => 'password',
-            'options' => [
+            'type'      => 'password',
+            'name'      => 'password',
+            'options'   => [
                 'label' => 'Password',
             ],
         ]);
@@ -94,21 +94,12 @@ class LoginForm extends Form
                 
         // Add input for "email" field
         $inputFilter->add([
-                'name'     => 'email',
-                'required' => true,
-                'filters'  => [
-                    ['name' => 'StringTrim'],                    
-                ],                
-                'validators' => [
-                    [
-                        'name' => 'EmailAddress',
-                        'options' => [
-                            'allow' => \Zend\Validator\Hostname::ALLOW_DNS,
-                            'useMxCheck' => false,                            
-                        ],
-                    ],
-                ],
-            ]);     
+            'name'     => 'username',
+            'required' => true,
+            'filters'  => [
+                ['name' => 'StringTrim'],                    
+            ],                
+        ]);     
         
         // Add input for "password" field
         $inputFilter->add([

@@ -91,7 +91,7 @@ class AuthController extends AbstractActionController
                 $data = $form->getData();
                 
                 // Perform login attempt.
-                $result = $this->authManager->login($data['email'], 
+                $result = $this->authManager->login($data['username'], 
                         $data['password'], $data['remember_me']);
                 
                 // Check result.

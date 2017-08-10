@@ -22,6 +22,11 @@ class Users
     protected $id;
 
     /** 
+     * @ORM\Column(name="username")  
+     */
+    protected $username;
+
+    /** 
      * @ORM\Column(name="email")  
      */
     protected $email;
@@ -72,6 +77,24 @@ class Users
     public function setId($id) 
     {
         $this->id = $id;
+    }
+
+    /**
+     * Returns username.     
+     * @return string
+     */
+    public function getUsername() 
+    {
+        return $this->username;
+    }
+
+    /**
+     * Sets username.     
+     * @param string $username
+     */
+    public function setUsername($username) 
+    {
+        $this->username = $username;
     }
 
     /**

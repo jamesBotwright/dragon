@@ -22,6 +22,10 @@ $this->pageBreadcrumbs()->setItems([
                 <td><?= $this->escapeHtml($user->getId()) ?></th>
             </tr>
             <tr>
+                <th>Username:</th>
+                <td><?= $this->escapeHtml($user->getUsername()) ?></th>
+            </tr>
+            <tr>
                 <th>E-mail:</th>
                 <td><?= $this->escapeHtml($user->getEmail()) ?></th>
             </tr>

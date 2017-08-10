@@ -6,6 +6,10 @@ $this->pageBreadcrumbs()->setItems([
             'Manage Users'=>$this->url('users'),
             'Add User'=>$this->url('users', ['action'=>'add'])
             ]);
+$form->get('username')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'username'
+    ]);
 $form->get('email')->setAttributes([
     'class'=>'form-control', 
     'placeholder'=>'name@example.com'
@@ -36,6 +40,12 @@ $form->prepare();
 <div class="row">
     <div class="col-md-6">
         <?= $this->form()->openTag($form); ?>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('username')); ?>
+            <?= $this->formElement($form->get('username')); ?>
+            <?= $this->formElementErrors($form->get('username')); ?>                  
+        </div>
         
         <div class="form-group">
             <?= $this->formLabel($form->get('email')); ?>

@@ -16,10 +16,10 @@ use Application\Entity\Users;
 class AuthAdaptor implements AdapterInterface
 {
     /**
-     * User email.
+     * Username.
      * @var string 
      */
-    private $email;
+    private $username;
     
     /**
      * Password
@@ -42,11 +42,11 @@ class AuthAdaptor implements AdapterInterface
     }
     
     /**
-     * Sets user email.     
+     * Sets username.     
      */
-    public function setEmail($email) 
+    public function setUsername($username) 
     {
-        $this->email = $email;        
+        $this->username = $username;        
     }
     
     /**
@@ -64,7 +64,7 @@ class AuthAdaptor implements AdapterInterface
     {                
         // Check the database if there is a user with such email.
         $user = $this->entityManager->getRepository(Users::class)
-                ->findOneByEmail($this->email);
+                ->findOneByUsername($this->username);
         
         // If there is no such user, return 'Identity Not Found' status.
         if ($user == null) {
@@ -93,7 +93,7 @@ class AuthAdaptor implements AdapterInterface
             // saved in session for later use.
             return new Result(
                     Result::SUCCESS, 
-                    $this->email, 
+                    $this->username, 
                     ['Authenticated successfully.']);        
         }             
         

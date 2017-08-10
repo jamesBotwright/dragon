@@ -57,6 +57,14 @@ class UserForm extends Form
         // Add "email" field
         $this->add([            
             'type'  => 'text',
+            'name' => 'username',
+            'options' => [
+                'label' => 'Username',
+            ],
+        ]);
+        
+        $this->add([            
+            'type'  => 'text',
             'name' => 'email',
             'options' => [
                 'label' => 'E-mail',
@@ -127,18 +135,25 @@ class UserForm extends Form
                 
         // Add input for "email" field
         $inputFilter->add([
-                'name'     => 'email',
-                'required' => true,
-                'filters'  => [
-                    ['name' => 'StringTrim'],                    
-                ],                
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'min' => 1,
-                            'max' => 128
-                        ],
+            'name'     => 'username',
+            'required' => true,
+            'filters'  => [                    
+                ['name' => 'StringTrim'],
+            ],   
+        ]);
+                
+        $inputFilter->add([
+            'name'     => 'email',
+            'required' => true,
+            'filters'  => [
+                ['name' => 'StringTrim'],                    
+            ],                
+            'validators' => [
+                [
+                    'name'    => 'StringLength',
+                    'options' => [
+                        'min' => 1,
+                        'max' => 128
                     ],
                     [
                         'name' => 'EmailAddress',

@@ -40,7 +40,7 @@ class AuthManager
      * Performs a login attempt. If $rememberMe argument is true, it forces the session
      * to last for one month (otherwise the session expires on one hour).
      */
-    public function login($email, $password, $rememberMe)
+    public function login($username, $password, $rememberMe)
     {   
         // Check if user has already logged in. If so, do not allow to log in 
         // twice.
@@ -50,7 +50,7 @@ class AuthManager
             
         // Authenticate with login/password.
         $authAdapter = $this->authService->getAdapter();
-        $authAdapter->setEmail($email);
+        $authAdapter->setUsername($username);
         $authAdapter->setPassword($password);
         $result = $this->authService->authenticate();
         // If user wants to "remember him", we will make session to expire in 
