@@ -16,15 +16,15 @@
             ->prependStylesheet($this->basePath('css/style.css'))
             ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
             ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
-            ->prependStylesheet($this->basePath('fullcalendar-3.4.0/fullcalendar.min.css'))
+            ->prependStylesheet($this->basePath('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css'))
         ?>
 
         <!-- Scripts -->
         <?= $this->headScript()
-            ->appendFile($this->basePath('fullcalendar-3.4.0/lib/jquery.min.js'))
+            ->appendFile($this->basePath('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'))
             ->appendFile($this->basePath('js/bootstrap.min.js'))
-            ->appendFile($this->basePath('fullcalendar-3.4.0/lib/moment.min.js'))
-            ->appendFile($this->basePath('fullcalendar-3.4.0/fullcalendar.js'))
+            ->appendFile($this->basePath('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js'))
+            ->appendFile($this->basePath('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js'))
         ?>
     </head>
     <body>
