@@ -1,32 +1,32 @@
 <div class="se-pre-con"></div>
-<div class="overlay">
-	<div id="loading-img"></div>
-</div>
-<div id="song-tables">
-    <h2>Song Management</h2>
-    <div class="row">
-        <div class="col-md-12">
-            <div id="suggested-songs-table">
-                <?php echo $this->partial('application/index/partial/suggested-songs-table.phtml', [
-                    'suggestedSongs' => $this->suggestedSongs, 
-                    'addSongForm'    => $this->addSongForm,
+
+<div class="row">
+    <div id="song-tables">
+        <h2>Song Management</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="suggested-songs-table">
+                    <?php echo $this->partial('application/index/partial/suggested-songs-table.phtml', [
+                        'suggestedSongs' => $this->suggestedSongs, 
+                        'addSongForm'    => $this->addSongForm,
+                    ]); ?>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <?php echo $this->partial('application/index/partial/practicing-songs-table.phtml', [
+                    'practicingSongs' => $this->practicingSongs, 
                 ]); ?>
             </div>
-        </div>
-        <div class="col-md-12">
-            <?php echo $this->partial('application/index/partial/practicing-songs-table.phtml', [
-                'practicingSongs' => $this->practicingSongs, 
-            ]); ?>
-        </div>
-        <div class="col-md-12">
-            <?php echo $this->partial('application/index/partial/set-list-songs-table.phtml', [
-                'setListSongs' => $this->setListSongs, 
-            ]); ?>
-        </div>
-        <div class="col-md-12">
-            <?php echo $this->partial('application/index/partial/removed-songs-table.phtml', [
-                'removedSongs' => $this->removedSongs, 
-            ]); ?>
+            <div class="col-md-12">
+                <?php echo $this->partial('application/index/partial/set-list-songs-table.phtml', [
+                    'setListSongs' => $this->setListSongs, 
+                ]); ?>
+            </div>
+            <div class="col-md-12">
+                <?php echo $this->partial('application/index/partial/removed-songs-table.phtml', [
+                    'removedSongs' => $this->removedSongs, 
+                ]); ?>
+            </div>
         </div>
     </div>
 </div>
