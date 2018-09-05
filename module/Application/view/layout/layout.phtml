@@ -11,10 +11,10 @@
         
             // Styles
             $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico']);
-            $this->headLink->prependStylesheet($this->basePath('css/custom.css'));
-            $this->headLink->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css');
-            $this->headLink->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css');
-            $this->headLink->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css');
+            $this->headLink()->prependStylesheet($this->basePath('css/custom.css'));
+            $this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css');
+            $this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css');
+            $this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css');
             echo $this->headLink();
             
             // Scripts
