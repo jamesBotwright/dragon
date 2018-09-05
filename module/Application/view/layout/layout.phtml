@@ -11,14 +11,14 @@
             // Styles
             $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico']);
             $this->headLink()->prependStylesheet($this->basePath('css/custom.css'));
-            $this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap-theme.min.css');
-            $this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.min.css');
+            $this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css');
+            $this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css');
             $this->headLink()->prependStylesheet('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css');
             echo $this->headLink();
             
             // Scripts
             $this->headScript()->appendFile('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js');
-            $this->headScript()->appendFile('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js');
+            $this->headScript()->appendFile('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js');
             $this->headScript()->appendFile('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js');
             $this->headScript()->appendFile('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js');
             echo $this->headScript();
